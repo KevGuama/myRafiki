@@ -19,4 +19,3 @@ function kelvin_register_menus() {
 // Hook the 'kelvin_register_menus' function into 'init', which initializes various WordPress features.
 add_action('init', 'kelvin_register_menus');
 
-?>
