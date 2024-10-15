@@ -1,21 +1,15 @@
 <?php
-// Theme setup
-function kelvin_portfolio_setup() {
-    // Gutenberg support
-    add_theme_support('editor-styles');
-    add_theme_support('wp-block-styles');
-    add_theme_support('align-wide');
-    add_theme_support('post-thumbnails');
+function kelvin_portfolio_enqueue_styles() {
+    wp_enqueue_style('kelvin-style', get_stylesheet_uri());
+}
+add_action('wp_enqueue_scripts', 'kelvin_portfolio_enqueue_styles');
 
-    // Register menus
+// Register navigation menu
+function kelvin_register_menus() {
     register_nav_menus(array(
-        'primary' => __('Primary Menu', 'kelvin-portfolio'),
+        'primary-menu' => __('Primary Menu', 'kelvin-portfolio'),
     ));
 }
-add_action('after_setup_theme', 'kelvin_portfolio_setup');
+add_action('init', 'kelvin_register_menus');
+?>
 
-// Enqueue styles and scripts
-function kelvin_portfolio_enqueue_scripts() {
-    wp_enqueue_style('main-styles', get_stylesheet_uri());
-}
-add_action('wp_enqueue_scripts', 'kelvin_portfolio_enqueue_scripts');
