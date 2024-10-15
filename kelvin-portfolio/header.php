@@ -11,13 +11,13 @@
         <?php 
         // Display the site title and page title dynamically
         bloginfo('name'); ?> | <?php 
-        // If it's the homepage, display the site's description, otherwise display the page title
+        // If it's the homepage, display the site's description, otherwise display the page title.
         is_front_page() ? bloginfo('description') : wp_title(''); 
         ?>
     </title>
 
     <?php 
-    // This function ensures that any necessary WordPress scripts, styles, or metadata are inserted in the header
+    // This function ensures that any necessary WordPress scripts, styles, or metadata are inserted in the header.
     wp_head(); 
     ?>
 </head>
