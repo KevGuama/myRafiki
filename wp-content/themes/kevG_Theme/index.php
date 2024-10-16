@@ -1,20 +1,23 @@
-<?php get_header(); ?> 
-<!-- Includes the header.php template -->
+<?php
+/**
+ * Main index file that WordPress uses to display the site.
+ */
 
-<main>
-    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-        <article>
-            <h2><?php the_title(); ?></h2> 
-            <!-- Outputs the post title -->
+// Include the header
+get_header(); 
 
-            <p><?php the_content(); ?></p> 
-            <!-- Outputs the full post content -->
-        </article>
-    <?php endwhile; else : ?>
-        <p><?php _e('Sorry, no posts found.', 'kelvin-portfolio'); ?></p> 
-        <!-- Displays this message if no posts are found -->
-    <?php endif; ?>
-</main>
+// Check if the current page is the front page (home) or any other page.
+if ( is_front_page() ) {
+    // Load the homepage content
+    get_template_part( 'template-parts/content', 'home' );
+} elseif ( is_page('about') ) {
+    // Load the about page content
+    get_template_part( 'template-parts/content', 'about' );
+} else {
+    // Fallback for other pages
+    echo '<p>Content for this page is under development.</p>';
+}
 
-<?php get_footer(); ?> 
-<!-- Includes the footer.php template -->
+// Include the footer
+get_footer(); 
+?>
