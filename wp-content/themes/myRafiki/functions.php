@@ -5,7 +5,6 @@
  * This file must be parseable by PHP 5.2.
  */
 
-<?php
 // Add theme support for post thumbnails and other features
 function myrafiki_setup() {
     add_theme_support('title-tag'); // Enables dynamic title tag
