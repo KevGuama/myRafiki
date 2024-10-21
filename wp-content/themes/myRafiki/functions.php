@@ -5,23 +5,21 @@
  * This file must be parseable by PHP 5.2.
  */
 
-define( 'KADENCE_VERSION', '1.2.9' );
-define( 'KADENCE_MINIMUM_WP_VERSION', '6.0' );
-define( 'KADENCE_MINIMUM_PHP_VERSION', '7.4' );
-
-// Bail if requirements are not met.
-if ( version_compare( $GLOBALS['wp_version'], KADENCE_MINIMUM_WP_VERSION, '<' ) || version_compare( phpversion(), KADENCE_MINIMUM_PHP_VERSION, '<' ) ) {
-	require get_template_directory() . '/inc/back-compat.php';
-	return;
+<?php
+// Add theme support for post thumbnails and other features
+function myrafiki_setup() {
+    add_theme_support('title-tag'); // Enables dynamic title tag
+    add_theme_support('post-thumbnails'); // Enables featured images
+    register_nav_menus(array(
+        'primary' => __('Primary Menu', 'myrafiki')
+    ));
 }
-// Include WordPress shims.
-require get_template_directory() . '/inc/wordpress-shims.php';
+add_action('after_setup_theme', 'myrafiki_setup');
 
-// Load the `kadence()` entry point function.
-require get_template_directory() . '/inc/class-theme.php';
-
-// Load the `kadence()` entry point function.
-require get_template_directory() . '/inc/functions.php';
-
-// Initialize the theme.
-call_user_func( 'Kadence\kadence' );
+// Enqueue theme styles and scripts
+function myrafiki_assets() {
+    wp_enqueue_style('myrafiki-style', get_stylesheet_uri()); // Load main stylesheet
+    wp_enqueue_script('myrafiki-scripts', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), null, true); // Load custom JS
+}
+add_action('wp_enqueue_scripts', 'myrafiki_assets');
+?>
