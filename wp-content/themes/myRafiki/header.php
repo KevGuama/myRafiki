@@ -4,6 +4,7 @@
  *
  * This is the template that displays all of the <head> section and everything up until <div id="content">
  */
+?>
 
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
