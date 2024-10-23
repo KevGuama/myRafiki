@@ -2,21 +2,22 @@
 /**
  * The main single item template file.
  *
- * @package kadence
+ * @package myRafiki Theme
  */
+?>
 
-namespace Kadence;
-
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
+<?php
+// Include the header template
 get_header();
 
-kadence()->print_styles( 'kadence-content' );
-/**
- * Hook for everything, makes for better elementor theming support.
- */
-do_action( 'kadence_single' );
+// Start the loop to display page content
+if ( have_posts() ) :
+    while ( have_posts() ) : the_post();
+        // Display the content of the page
+        the_content();
+    endwhile;
+endif;
 
+// Include the footer template
 get_footer();
+?>
