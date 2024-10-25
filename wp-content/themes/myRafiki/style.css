@@ -9,3 +9,10 @@
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain: myrafiki
 */
+
+/* General page styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 1;
+    padding: 1;
+}
