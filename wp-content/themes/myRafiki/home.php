@@ -27,4 +27,7 @@ get_header(); // Include the header
         <!-- Add images or gallery for scenes -->
     </section>
 
-
+<section class="account">
+        <h2>Join Us</h2>
+        <a href="<?php echo wp_registration_url(); ?>">Create an Account</a> <!-- Link to WP registration -->
+    </section>
