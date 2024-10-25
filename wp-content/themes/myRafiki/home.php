@@ -20,3 +20,11 @@ get_header(); // Include the header
         <h2>About the Site</h2>
         <p>Learn about unique locations, interact with locals, and make your trip unforgettable!</p>
     </section>
+
+<section class="scenes">
+        <h2>Scenes to Explore</h2>
+        <p>Check out some of our top destinations and discover hidden gems.</p>
+        <!-- Add images or gallery for scenes -->
+    </section>
+
+
