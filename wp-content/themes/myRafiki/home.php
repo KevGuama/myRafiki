@@ -31,3 +31,7 @@ get_header(); // Include the header
         <h2>Join Us</h2>
         <a href="<?php echo wp_registration_url(); ?>">Create an Account</a> <!-- Link to WP registration -->
     </section>
+</div>
+
+<?php
+get_footer(); // Include the footer
