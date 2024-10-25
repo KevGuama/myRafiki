@@ -26,3 +26,10 @@ body {
 .about-section, .site-info, .scenes, .account {
     margin: 20px 0;
 }
+
+.account a {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+}
