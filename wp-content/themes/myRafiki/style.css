@@ -22,3 +22,7 @@ body {
     text-align: center;
     padding: 20px;
 }
+
+.about-section, .site-info, .scenes, .account {
+    margin: 20px 0;
+}
