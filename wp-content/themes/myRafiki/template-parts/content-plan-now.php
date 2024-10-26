@@ -45,5 +45,6 @@ $current_location = $locations[$location];
 echo '<h1>Plan Your Trip to ' . esc_html($location) . '</h1>';
 echo '<p>Explore top-rated local tour guides and attractions in ' . esc_html($location) . '.</p>';
 
-//
+// Display Tour Guides
+echo '<h2>Top-Rated Guides in ' . esc_html($location) . '</h2>';
 
