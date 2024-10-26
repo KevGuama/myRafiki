@@ -25,3 +25,13 @@ get_header(); // Include the header
         <!-- Display top guides as profiles -->
     </section>
 
+<section class="attractions">
+        <h2>Popular Attractions</h2>
+        <p>Explore the most popular attractions in the area.</p>
+        <!-- Display top attractions, e.g., hotels, beaches, etc. -->
+    </section>
+</div>
+
+<?php
+get_footer(); // Include the footer
+?>
