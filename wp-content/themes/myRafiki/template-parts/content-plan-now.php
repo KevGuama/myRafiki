@@ -22,4 +22,20 @@ $locations = [
             ['name' => 'Omolo', 'rating' => '4.5 Stars'],
             ['name' => 'Kelvin', 'rating' => '4 Stars']
         ],
+'attractions' => [
+            'Nairobi National Park', 'National Museum', 'Nairobi Walk'
+        ]
+    ],
+    'California' => [
+        'guides' => [
+            ['name' => 'Jane Doe', 'rating' => '5 Stars'],
+            ['name' => 'John Doe', 'rating' => '4.5 Stars'],
+            ['name' => 'Dr. Who', 'rating' => '4 Stars']
+        ],
+        'attractions' => [
+            'Hollywood Walk of Fame', 'Disneyland Park', 'Yosemite National Park'
+        ]
+    ]
+];
+
 
