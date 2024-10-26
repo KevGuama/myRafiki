@@ -21,4 +21,11 @@ function myrafiki_assets() {
     wp_enqueue_script('myrafiki-scripts', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), null, true); // Load custom JS
 }
 add_action('wp_enqueue_scripts', 'myrafiki_assets');
+
+// Restrict access to the "Plan Now" page for non-logged-in users
+function restrict_plan_now_page_access() {
+    // Specify the ID or slug of the "Plan Now" page
+    $plan_now_page_slug = 'plan-now';
+
 ?>
+
