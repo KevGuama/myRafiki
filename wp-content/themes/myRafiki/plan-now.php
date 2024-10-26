@@ -18,3 +18,10 @@ get_header(); // Include the header
         <p>Find local guides in your desired location.</p>
         <!-- Dropdown or map selection can go here -->
     </section>
+
+<section class="top-guides">
+        <h2>Top Rated Guides</h2>
+        <p>Meet the best guides in the area based on ratings and feedback.</p>
+        <!-- Display top guides as profiles -->
+    </section>
+
