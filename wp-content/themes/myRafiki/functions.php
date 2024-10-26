@@ -35,5 +35,10 @@ function restrict_plan_now_page_access() {
 }
 add_action('template_redirect', 'restrict_plan_now_page_access');
 
+// Conditionally remove "Plan Now" from menus if the user is not logged in
+function hide_plan_now_from_menu($items, $args) {
+    // Specify the "Plan Now" page slug
+    $plan_now_page_slug = 'plan-now';
+
 ?>
 
