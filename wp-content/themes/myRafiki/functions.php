@@ -49,7 +49,7 @@ if (!is_user_logged_in()) {
     }
 return $items;
 }
-
+add_filter('wp_nav_menu_objects', 'hide_plan_now_from_menu', 10, 2);
 
 ?>
 
