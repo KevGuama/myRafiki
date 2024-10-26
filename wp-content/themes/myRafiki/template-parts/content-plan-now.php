@@ -38,4 +38,7 @@ $locations = [
     ]
 ];
 
+// Fetch current guides and attractions based on selected location
+$current_location = $locations[$location];
+
 
