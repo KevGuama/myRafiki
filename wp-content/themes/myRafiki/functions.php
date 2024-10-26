@@ -40,5 +40,16 @@ function hide_plan_now_from_menu($items, $args) {
     // Specify the "Plan Now" page slug
     $plan_now_page_slug = 'plan-now';
 
+if (!is_user_logged_in()) {
+        foreach ($items as $key => $item) {
+            if ($item->object == 'page' && $item->post_name == $plan_now_page_slug) {
+                unset($items[$key]); // Remove the "Plan Now" menu item
+            }
+        }
+    }
+return $items;
+}
+
+
 ?>
 
