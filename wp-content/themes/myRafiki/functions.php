@@ -27,5 +27,12 @@ function restrict_plan_now_page_access() {
     // Specify the ID or slug of the "Plan Now" page
     $plan_now_page_slug = 'plan-now';
 
+// Check if the user is not logged in and if the current page is "Plan Now"
+    if (!is_user_logged_in() && is_page($plan_now_page_slug)) {
+        // Redirect to the login page or another safe page
+        wp_redirect(wp_login_url());
+        exit;
+    }
+
 ?>
 
