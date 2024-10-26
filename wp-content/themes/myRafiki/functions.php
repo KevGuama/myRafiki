@@ -32,7 +32,8 @@ function restrict_plan_now_page_access() {
         // Redirect to the login page or another safe page
         wp_redirect(wp_login_url());
         exit;
-    }
+}
+add_action('template_redirect', 'restrict_plan_now_page_access');
 
 ?>
 
