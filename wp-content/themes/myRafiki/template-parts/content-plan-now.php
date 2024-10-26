@@ -57,4 +57,6 @@ echo '<ul>';
 foreach ($current_location['attractions'] as $attraction) {
     echo '<li>' . esc_html($attraction) . '</li>';
 }
+echo '</ul>';
+?>
 
