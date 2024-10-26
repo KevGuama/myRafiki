@@ -41,4 +41,9 @@ $locations = [
 // Fetch current guides and attractions based on selected location
 $current_location = $locations[$location];
 
+// Display Title and Introduction
+echo '<h1>Plan Your Trip to ' . esc_html($location) . '</h1>';
+echo '<p>Explore top-rated local tour guides and attractions in ' . esc_html($location) . '.</p>';
+
+//
 
