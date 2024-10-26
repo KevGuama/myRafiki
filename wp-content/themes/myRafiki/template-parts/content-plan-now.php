@@ -53,4 +53,8 @@ foreach ($current_location['guides'] as $guide){
 
 // Display Attractions
 echo '<h2>Popular Attractions in ' . esc_html($location) . '</h2>';
+echo '<ul>';
+foreach ($current_location['attractions'] as $attraction) {
+    echo '<li>' . esc_html($attraction) . '</li>';
+}
 
