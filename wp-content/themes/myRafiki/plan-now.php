@@ -7,3 +7,8 @@
 get_header(); // Include the header
 
 ?>
+
+<!-- Start of the Plan Now Content -->
+
+<div class="plan-now-page">
+    <h1>Plan Your Trip</h1>
