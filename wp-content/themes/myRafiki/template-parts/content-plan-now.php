@@ -14,3 +14,12 @@ if ( ! is_user_logged_in() ) {
 // Get selected location from URL or set default
 $location = isset($_GET['location']) ? sanitize_text_field($_GET['location']) : 'Nairobi';
 
+// Define guides and attractions for each location
+$locations = [
+    'Nairobi' => [
+        'guides' => [
+            ['name' => 'Karanja', 'rating' => '5 Stars'],
+            ['name' => 'Omolo', 'rating' => '4.5 Stars'],
+            ['name' => 'Kelvin', 'rating' => '4 Stars']
+        ],
+
