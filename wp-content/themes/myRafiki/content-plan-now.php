@@ -2,17 +2,17 @@
 /**
  * Template Part: Plan Now Page Content
  *
- * This template shows content for the "Plan Now" page.
+ * Displays content for the "Plan Now" page.
  */
 
-// Check if user is logged in
+// Redirect if not logged in
 if ( ! is_user_logged_in() ) {
-    wp_redirect( wp_login_url() ); // Redirects to login if not logged in
+    wp_redirect( wp_login_url() );
     exit;
 }
 
 // Get selected location from URL or set default
-$location = isset($_GET['location']) ? sanitize_text_field($_GET['location']) : 'Nairobi';
+$location = isset($_GET['location']) ? sanitize_text_field($_GET['location']) : 'California';
 
 // Define guides and attractions for each location
 $locations = [
@@ -22,7 +22,7 @@ $locations = [
             ['name' => 'Omolo', 'rating' => '4.5 Stars'],
             ['name' => 'Kelvin', 'rating' => '4 Stars']
         ],
-'attractions' => [
+        'attractions' => [
             'Nairobi National Park', 'National Museum', 'Nairobi Walk'
         ]
     ],
@@ -47,7 +47,7 @@ echo '<p>Explore top-rated local tour guides and attractions in ' . esc_html($lo
 
 // Display Tour Guides
 echo '<h2>Top-Rated Guides in ' . esc_html($location) . '</h2>';
-foreach ($current_location['guides'] as $guide){
+foreach ($current_location['guides'] as $guide) {
     echo '<p>Guide: ' . esc_html($guide['name']) . ' - ' . esc_html($guide['rating']) . '</p>';
 }
 
@@ -59,4 +59,3 @@ foreach ($current_location['attractions'] as $attraction) {
 }
 echo '</ul>';
 ?>
-
