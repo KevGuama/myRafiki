@@ -47,4 +47,5 @@ echo '<p>Explore top-rated local tour guides and attractions in ' . esc_html($lo
 
 // Display Tour Guides
 echo '<h2>Top-Rated Guides in ' . esc_html($location) . '</h2>';
+foreach ($current_location['guides'] as $guide)
 
