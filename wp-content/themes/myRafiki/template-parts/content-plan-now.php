@@ -1,9 +1,9 @@
 <?php
 /**
- * Template Part: Plan Now Page Content
- *
- * Displays content for the "Plan Now" page.
+ * Template Name: Content Plan Now
+ * Description: Template for the Plan Now page with dynamic content.
  */
+
 
 // Redirect if not logged in
 if ( ! is_user_logged_in() ) {
