@@ -26,12 +26,13 @@ add_action('wp_enqueue_scripts', 'myrafiki_assets');
 function restrict_plan_now_page_access() {
     // Specify the ID or slug of the "Plan Now" page
     $plan_now_page_slug = 'plan-now';
-
-// Check if the user is not logged in and if the current page is "Plan Now"
+    
+    // Check if the user is not logged in and if the current page is "Plan Now"
     if (!is_user_logged_in() && is_page($plan_now_page_slug)) {
         // Redirect to the login page or another safe page
         wp_redirect(wp_login_url());
         exit;
+    }
 }
 add_action('template_redirect', 'restrict_plan_now_page_access');
 
@@ -39,17 +40,16 @@ add_action('template_redirect', 'restrict_plan_now_page_access');
 function hide_plan_now_from_menu($items, $args) {
     // Specify the "Plan Now" page slug
     $plan_now_page_slug = 'plan-now';
-
-if (!is_user_logged_in()) {
+    
+    if (!is_user_logged_in()) {
         foreach ($items as $key => $item) {
             if ($item->object == 'page' && $item->post_name == $plan_now_page_slug) {
                 unset($items[$key]); // Remove the "Plan Now" menu item
             }
         }
     }
-return $items;
+    return $items;
 }
 add_filter('wp_nav_menu_objects', 'hide_plan_now_from_menu', 10, 2);
-
 ?>
 
