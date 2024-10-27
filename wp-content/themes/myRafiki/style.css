@@ -34,11 +34,4 @@ body {
     text-decoration: none;
 }
 
-/* Plan Now Page Styles */
-.plan-now-page {
-    padding: 20px;
-}
-
-.location-selection, .top-guides, .attractions {
-    margin: 20px 0;
-}
+/* Plan Now Page Styles to be managed more clealy under assets css */
