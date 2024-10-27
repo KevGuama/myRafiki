@@ -83,6 +83,9 @@ array( 'core/select', array(
 array( 'core/paragraph', array(
             'placeholder' => 'Enter guide information here...',
         ) ),
+array( 'core/list', array(
+            'placeholder' => 'List attractions here...',
+        ) ),
 }
 ?>
 
