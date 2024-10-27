@@ -10,51 +10,39 @@ if ( ! is_user_logged_in() ) {
     exit; // Prevents further code execution
 }
 
-// Get the selected location from the URL, or use 'California' as a default.
-$location = isset($_GET['location']) ? sanitize_text_field($_GET['location']) : 'California';
+<div class="plan-now-content">
+    <h1>Plan Your Trip</h1>
+    <p>Select a location to view guides and attractions available:</p>
 
-// Define the locations array with guides and attractions for each location.
-$locations = [
-    'Nairobi' => [
-        'guides' => [
-            ['name' => 'Karanja', 'rating' => '5 Stars'],
-            ['name' => 'Omolo', 'rating' => '4.5 Stars'],
-            ['name' => 'Kelvin', 'rating' => '4 Stars']
-        ],
-        'attractions' => [
-            'Nairobi National Park', 'National Museum', 'Nairobi Walk'
-        ]
-    ],
-    'California' => [
-        'guides' => [
-            ['name' => 'Jane Doe', 'rating' => '5 Stars'],
-            ['name' => 'John Doe', 'rating' => '4.5 Stars'],
-            ['name' => 'Dr. Who', 'rating' => '4 Stars']
-        ],
-        'attractions' => [
-            'Hollywood Walk of Fame', 'Disneyland Park', 'Yosemite National Park'
-        ]
-    ]
-];
+    <div class="location" id="nairobi-kenya">
+        <h2>Nairobi, Kenya</h2>
+        <h3>Top-Rated Guides:</h3>
+        <ul>
+            <li>Karanja - 5 stars</li>
+            <li>Omolo - 4.5 stars</li>
+            <li>Kelvin - 5 stars</li>
+        </ul>
+        <h3>Best Attractions:</h3>
+        <ul>
+            <li>Nairobi National Park</li>
+            <li>National Museum</li>
+            <li>Nairobi Walk</li>
+        </ul>
+    </div>
 
-// Fetch guides and attractions based on the selected location
-$current_location = $locations[$location];
-
-// Display the title and introductory text for the selected location.
-echo '<h1>Plan Your Trip to ' . esc_html($location) . '</h1>';
-echo '<p>Explore top-rated local tour guides and attractions in ' . esc_html($location) . '.</p>';
-
-// Display the section for tour guides in the chosen location.
-echo '<h2>Top-Rated Guides in ' . esc_html($location) . '</h2>';
-foreach ($current_location['guides'] as $guide) {
-    echo '<p>Guide: ' . esc_html($guide['name']) . ' - ' . esc_html($guide['rating']) . '</p>';
-}
-
-// Display the section for attractions in the chosen location.
-echo '<h2>Popular Attractions in ' . esc_html($location) . '</h2>';
-echo '<ul>';
-foreach ($current_location['attractions'] as $attraction) {
-    echo '<li>' . esc_html($attraction) . '</li>';
-}
-echo '</ul>';
-?>
+    <div class="location" id="california-usa">
+        <h2>California, USA</h2>
+        <h3>Top-Rated Guides:</h3>
+        <ul>
+            <li>Jane Doe - 4.8 stars</li>
+            <li>John Doe - 4.7 stars</li>
+            <li>Dr. Who - 5 stars</li>
+        </ul>
+        <h3>Best Attractions:</h3>
+        <ul>
+            <li>Golden Gate Bridge</li>
+            <li>Hollywood Walk of Fame</li>
+            <li>Disneyland Park</li>
+        </ul>
+    </div>
+</div>

@@ -44,34 +44,35 @@ body {
 }
 
 /* General styling for the Plan Now page */
-.page-template-content-plan-now h1 {
-    font-size: 2rem;
-    color: #333;
-    text-align: center;
+/* Plan Now page styles */
+.plan-now-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
 }
 
-.page-template-content-plan-now h2 {
-    font-size: 1.5rem;
-    color: #0056b3;
-    margin-top: 20px;
+.plan-now-content h1 {
     text-align: center;
-}
-
-.page-template-content-plan-now p {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.6;
-    text-align: center;
-}
-
-.page-template-content-plan-now ul {
-    list-style-type: disc;
-    padding-left: 20px;
     color: #333;
 }
 
-.page-template-content-plan-now li {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 8px;
+.plan-now-content .location {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.plan-now-content h2, .plan-now-content h3 {
+    color: #0073aa;
+}
+
+.plan-now-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.plan-now-content li {
+    padding: 5px 0;
 }
