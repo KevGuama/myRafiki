@@ -72,6 +72,8 @@ $post_type_object->template = array(
         array( 'core/paragraph', array(
             'placeholder' => 'Enter page introduction here...',
         ) ),
+        array( 'core/heading', array(
+            'level' => 2,
 }
 ?>
 
