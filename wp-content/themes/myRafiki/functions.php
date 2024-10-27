@@ -61,13 +61,6 @@ if ( is_page_template( 'template-parts/content-plan-now.php' ) ) {
         wp_enqueue_style( 'plan-now-custom-style', get_template_directory_uri() . '/css/plan-now.css' );
     }
 }
-
-
-
-
-
-
-
-
+add_action( 'wp_enqueue_scripts', 'myrafiki_enqueue_styles' );
 ?>
 
