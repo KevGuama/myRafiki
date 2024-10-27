@@ -52,26 +52,15 @@ function hide_plan_now_from_menu($items, $args) {
 }
 add_filter('wp_nav_menu_objects', 'hide_plan_now_from_menu', 10, 2);
 
-// Ensure Plan Now CSS is enqueued
-function myrafiki_enqueue_styles() {
-    wp_enqueue_style( 'myrafiki-style', get_stylesheet_uri() );
-
-// Enqueue custom styles for Plan Now page specifically
-if ( is_page_template( 'template-parts/content-plan-now.php' ) ) {
-        wp_enqueue_style( 'plan-now-custom-style', get_template_directory_uri() . '/css/plan-now.css' );
-    }
-}
-add_action( 'wp_enqueue_scripts', 'myrafiki_enqueue_styles' );
-
 // Enqueue custom CSS files based on the current page.
-function myrafiki_enqueue_page_specific_styles()
-{
-	if ( is_page_template( 'template-parts/content-plan-now.php' ) ) {
+function myrafiki_enqueue_page_specific_styles() {
+    if ( is_page_template( 'template-parts/content-plan-now.php' ) ) {
         // Enqueue Plan Now page CSS only on the Plan Now page.
-	wp_enqueue_style( 'plan-now-style', get_template_directory_uri() . '/assets/css/plan-now.css', array(), '1.0' );
+        wp_enqueue_style( 'plan-now-style', get_template_directory_uri() . '/assets/css/plan-now.css', array(), '1.0' );
+    } elseif ( is_front_page() || is_home() ) {
+        // Enqueue Home page CSS only on the Home page.
+        wp_enqueue_style( 'home-style', get_template_directory_uri() . '/assets/css/home.css', array(), '1.0' );
     }
-elseif ( is_front_page() || is_home() ) {
 }
-
 ?>
 
