@@ -57,6 +57,10 @@ function myrafiki_enqueue_styles() {
     wp_enqueue_style( 'myrafiki-style', get_stylesheet_uri() );
 
 // Enqueue custom styles for Plan Now page specifically
+if ( is_page_template( 'template-parts/content-plan-now.php' ) ) {
+        wp_enqueue_style( 'plan-now-custom-style', get_template_directory_uri() . '/css/plan-now.css' );
+    }
+}
 
 
 
