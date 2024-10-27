@@ -42,37 +42,3 @@ body {
 .location-selection, .top-guides, .attractions {
     margin: 20px 0;
 }
-
-/* General styling for the Plan Now page */
-/* Plan Now page styles */
-.plan-now-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-}
-
-.plan-now-content h1 {
-    text-align: center;
-    color: #333;
-}
-
-.plan-now-content .location {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 8px;
-}
-
-.plan-now-content h2, .plan-now-content h3 {
-    color: #0073aa;
-}
-
-.plan-now-content ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.plan-now-content li {
-    padding: 5px 0;
-}
