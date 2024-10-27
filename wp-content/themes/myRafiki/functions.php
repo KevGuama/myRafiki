@@ -62,5 +62,8 @@ if ( is_page_template( 'template-parts/content-plan-now.php' ) ) {
     }
 }
 add_action( 'wp_enqueue_scripts', 'myrafiki_enqueue_styles' );
+
+// Enqueue custom CSS files based on the current page.
+
 ?>
 
