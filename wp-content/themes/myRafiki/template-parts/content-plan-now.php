@@ -2,6 +2,7 @@
 /**
  * Template Name: Content Plan Now
  * Description: Template for the Plan Now page with dynamic content.
+ * Make the Plan Now page Gutenberg-compatible .
  */
 
 // Redirect users to the login page if they are not logged in.
@@ -10,8 +11,7 @@ if ( ! is_user_logged_in() ) {
     exit; // Prevents further code execution
 }
 
-// Get the selected location from the URL, or use 'California' as a default.
-$location = isset($_GET['location']) ? sanitize_text_field($_GET['location']) : 'California';
+get_header(); ?>
 
 // Define the locations array with guides and attractions for each location.
 $locations = [
