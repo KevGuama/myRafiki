@@ -75,6 +75,11 @@ function myrafiki_plan_now_block_template(){
         array( 'core/heading', array(
             'level' => 2,
             'content' => 'Select a location',
-        ) ),}
+        ) ),
+array( 'core/select', array(
+            'options' => array( 'California', 'Nairobi' ),
+            'label' => 'Choose Location',
+        ) ),
+}
 ?>
 
