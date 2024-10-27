@@ -70,6 +70,7 @@ function myrafiki_enqueue_page_specific_styles()
         // Enqueue Plan Now page CSS only on the Plan Now page.
 	wp_enqueue_style( 'plan-now-style', get_template_directory_uri() . '/assets/css/plan-now.css', array(), '1.0' );
     }
+elseif ( is_front_page() || is_home() ) {
 }
 
 ?>
