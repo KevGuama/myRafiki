@@ -53,6 +53,8 @@ function hide_plan_now_from_menu($items, $args) {
 add_filter('wp_nav_menu_objects', 'hide_plan_now_from_menu', 10, 2);
 
 // Ensure Plan Now CSS is enqueued
+function myrafiki_enqueue_styles() {
+    wp_enqueue_style( 'myrafiki-style', get_stylesheet_uri() );
 
 
 
