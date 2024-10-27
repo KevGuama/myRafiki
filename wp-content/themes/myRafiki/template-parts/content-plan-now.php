@@ -3,6 +3,7 @@
  * Template Name: Content Plan Now
  * Description: Template for the Plan Now page with dynamic content.
  */
+?>
 
 // Redirect users to the login page if they are not logged in.
 if ( ! is_user_logged_in() ) {
