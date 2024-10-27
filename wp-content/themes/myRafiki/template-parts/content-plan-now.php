@@ -16,3 +16,6 @@ get_header(); ?>
 <div class="plan-now-container">
     <!-- Gutenberg editable section for adding blocks in Plan Now page -->
     <div class="plan-now-content">
+	<?php
+        // Gutenberg blocks can be added in this section
+        if ( have_posts() ) :
