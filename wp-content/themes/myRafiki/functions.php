@@ -51,5 +51,15 @@ function hide_plan_now_from_menu($items, $args) {
     return $items;
 }
 add_filter('wp_nav_menu_objects', 'hide_plan_now_from_menu', 10, 2);
+
+// Ensure Plan Now CSS is enqueued
+
+
+
+
+
+
+
+
 ?>
 
