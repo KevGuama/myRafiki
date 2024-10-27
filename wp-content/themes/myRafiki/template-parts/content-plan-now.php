@@ -4,7 +4,6 @@
  * Description: Template for the Plan Now page with dynamic content.
  * Make the Plan Now page Gutenberg-compatible .
  */
-
 // Redirect if not logged in
 if ( ! is_user_logged_in() ) {
     wp_redirect( wp_login_url() );
