@@ -80,6 +80,9 @@ array( 'core/select', array(
             'options' => array( 'California', 'Nairobi' ),
             'label' => 'Choose Location',
         ) ),
+array( 'core/paragraph', array(
+            'placeholder' => 'Enter guide information here...',
+        ) ),
 }
 ?>
 
