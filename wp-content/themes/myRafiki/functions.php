@@ -62,5 +62,6 @@ function myrafiki_enqueue_page_specific_styles() {
         wp_enqueue_style( 'home-style', get_template_directory_uri() . '/assets/css/home.css', array(), '1.0' );
     }
 }
+add_action( 'wp_enqueue_scripts', 'myrafiki_enqueue_page_specific_styles' );
 ?>
 
