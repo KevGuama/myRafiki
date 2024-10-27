@@ -24,3 +24,7 @@ get_header(); ?>
             endwhile;
         endif;
         ?>
+    </div>
+</div>
+
+<?php get_footer(); ?>
