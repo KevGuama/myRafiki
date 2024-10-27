@@ -66,7 +66,8 @@ add_action( 'wp_enqueue_scripts', 'myrafiki_enqueue_styles' );
 // Enqueue custom CSS files based on the current page.
 function myrafiki_enqueue_page_specific_styles()
 {
-
+	if ( is_page_template( 'template-parts/content-plan-now.php' ) ) {
+        // Enqueue Plan Now page CSS only on the Plan Now page.
 }
 
 ?>
