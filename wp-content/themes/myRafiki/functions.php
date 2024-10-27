@@ -68,12 +68,13 @@ add_action( 'wp_enqueue_scripts', 'myrafiki_enqueue_page_specific_styles' );
 function myrafiki_plan_now_block_template(){
 
 // Define the block template for the Plan Now page.
-$post_type_object->template = array(
+    $post_type_object->template = array(
         array( 'core/paragraph', array(
             'placeholder' => 'Enter page introduction here...',
         ) ),
         array( 'core/heading', array(
             'level' => 2,
-}
+            'content' => 'Select a location',
+        ) ),}
 ?>
 
