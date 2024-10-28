@@ -40,5 +40,13 @@ $location_pod = pods('location', array(
     'limit' => 1,
 ));
 
+if ( $location_pod->total() > 0 ) {
+    while ( $location_pod->fetch() ) {
+        $location_name = $location_pod->display('location_name');
+        $location_description = $location_pod->display('description');
+        $top_attractions = $location_pod->field('top_attractions');
+    }
+?>
+
 
 <?php get_footer(); ?>
