@@ -50,6 +50,13 @@ if ( $location_pod->total() > 0 ) {
 
     <h1>Plan Your Trip to <?php echo esc_html( $location_name ); ?></h1>
     <p><?php echo wp_kses_post( $location_description ); ?></p>
+<!-- Display Top Attractions -->
+    <h2>Top Attractions in <?php echo esc_html( $location_name ); ?></h2>
+    <ul>
+        <?php foreach ( $top_attractions as $attraction ) : ?>
+            <li><?php echo esc_html( $attraction['top_attraction'] ); ?></li>
+        <?php endforeach; ?>
+    </ul>
 
 
 <?php get_footer(); ?>
