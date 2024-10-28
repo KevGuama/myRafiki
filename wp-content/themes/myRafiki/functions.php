@@ -84,6 +84,10 @@ array( 'core/paragraph', array(
             array( 'core/paragraph', array(
                 'content' => 'Choose Location: Nairobi or California',
             ) ),
+// Placeholder for guide information.
+            array( 'core/paragraph', array(
+                'placeholder' => 'Enter guide information here...',
+            ) ),
 
 
 
