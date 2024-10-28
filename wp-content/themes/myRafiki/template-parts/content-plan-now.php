@@ -31,4 +31,14 @@ get_header(); ?>
 * Description: Displays dynamic location and guide information.
 */
 
+// Fetch selected location (default to Nairobi)
+$selected_location = isset($_GET['location']) ? sanitize_text_field($_GET['location']) : 'Nairobi';
+
+// Query Pods to retrieve location details
+$location_pod = pods('location', array(
+    'where' => 'location_name.meta_value = "' . esc_sql($selected_location) . '"',
+    'limit' => 1,
+));
+
+
 <?php get_footer(); ?>
