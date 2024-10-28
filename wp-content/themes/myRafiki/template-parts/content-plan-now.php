@@ -28,8 +28,14 @@ get_header(); ?>
 
 <?php
 /**
-* Description: Displays dynamic location and guide information.
-*/
+ * Description: Displays dynamic location and guide information.
+ */
+
+// Redirect if not logged in
+if ( ! is_user_logged_in() ) {
+    wp_redirect( wp_login_url() );
+    exit;
+}
 
 // Fetch selected location (default to Nairobi)
 $selected_location = isset($_GET['location']) ? sanitize_text_field($_GET['location']) : 'Nairobi';
@@ -50,37 +56,40 @@ if ( $location_pod->total() > 0 ) {
 
     <h1>Plan Your Trip to <?php echo esc_html( $location_name ); ?></h1>
     <p><?php echo wp_kses_post( $location_description ); ?></p>
-<!-- Display Top Attractions -->
+
+    <!-- Display Top Attractions -->
     <h2>Top Attractions in <?php echo esc_html( $location_name ); ?></h2>
     <ul>
         <?php foreach ( $top_attractions as $attraction ) : ?>
             <li><?php echo esc_html( $attraction['top_attraction'] ); ?></li>
         <?php endforeach; ?>
     </ul>
-<!-- Display Guides for the Location -->
-<h2>Available Guides</h2>
+
+    <!-- Display Guides for the Location -->
+    <h2>Available Guides</h2>
     <ul>
         <?php
         // Query to retrieve guides associated with this location
         $guide_pod = pods('guides', array(
             'where' => 'location_relationship.meta_value = "' . esc_sql($location_pod->id()) . '"',
         ));
-if ( $guide_pod->total() > 0 ) {
+
+        if ( $guide_pod->total() > 0 ) {
             while ( $guide_pod->fetch() ) {
                 $guide_name = $guide_pod->display('guide_name');
                 $guide_rating = $guide_pod->display('guide_rating');
                 echo '<li>' . esc_html( $guide_name ) . ' - Rating: ' . esc_html( $guide_rating ) . '</li>';
-            }} else {
+            }
+        } else {
             echo '<li>No guides available for this location.</li>';
         }
         ?>
     </ul>
+
 <?php
 } else {
     echo '<p>Location not found.</p>';
 }
 ?>
-
-
 
 <?php get_footer(); ?>
