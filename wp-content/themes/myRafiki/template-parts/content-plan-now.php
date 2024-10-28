@@ -65,6 +65,12 @@ if ( $location_pod->total() > 0 ) {
         $guide_pod = pods('guides', array(
             'where' => 'location_relationship.meta_value = "' . esc_sql($location_pod->id()) . '"',
         ));
+if ( $guide_pod->total() > 0 ) {
+            while ( $guide_pod->fetch() ) {
+                $guide_name = $guide_pod->display('guide_name');
+                $guide_rating = $guide_pod->display('guide_rating');
+                echo '<li>' . esc_html( $guide_name ) . ' - Rating: ' . esc_html( $guide_rating ) . '</li>';
+            }
 
 
 <?php get_footer(); ?>
