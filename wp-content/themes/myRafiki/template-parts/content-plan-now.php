@@ -70,7 +70,12 @@ if ( $guide_pod->total() > 0 ) {
                 $guide_name = $guide_pod->display('guide_name');
                 $guide_rating = $guide_pod->display('guide_rating');
                 echo '<li>' . esc_html( $guide_name ) . ' - Rating: ' . esc_html( $guide_rating ) . '</li>';
-            }
+            }} else {
+            echo '<li>No guides available for this location.</li>';
+        }
+        ?>
+    </ul>
+
 
 
 <?php get_footer(); ?>
