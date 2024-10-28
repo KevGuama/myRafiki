@@ -92,6 +92,8 @@ array( 'core/paragraph', array(
             array( 'core/list', array(
                 'placeholder' => 'List the attractions here...',
             ) ),
+pply the template to the 'Plan Now' page.
+        $post->post_content = serialize_blocks( $template );
 
 
 
