@@ -88,6 +88,10 @@ array( 'core/paragraph', array(
             array( 'core/paragraph', array(
                 'placeholder' => 'Enter guide information here...',
             ) ),
+// Placeholder for attractions list.
+            array( 'core/list', array(
+                'placeholder' => 'List the attractions here...',
+            ) ),
 
 
 
