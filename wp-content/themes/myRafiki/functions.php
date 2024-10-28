@@ -64,5 +64,10 @@ function myrafiki_enqueue_page_specific_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'myrafiki_enqueue_page_specific_styles' );
 
+// Register a Gutenberg block template for the Plan Now page.
+function myrafiki_register_plan_now_block_template( $post ) {
+    // Check if we're on the 'page' post type and the 'Plan Now' page by its slug or ID.
+    if
+
 ?>
 
