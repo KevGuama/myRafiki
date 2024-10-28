@@ -48,5 +48,8 @@ if ( $location_pod->total() > 0 ) {
     }
 ?>
 
+    <h1>Plan Your Trip to <?php echo esc_html( $location_name ); ?></h1>
+    <p><?php echo wp_kses_post( $location_description ); ?></p>
+
 
 <?php get_footer(); ?>
