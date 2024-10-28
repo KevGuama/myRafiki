@@ -80,5 +80,13 @@ array( 'core/paragraph', array(
                 'level' => 2,
                 'content' => 'Select a Location',
             ) ),
+// Placeholder for location selection dropdown (custom implementation needed).
+            array( 'core/paragraph', array(
+                'content' => 'Choose Location: Nairobi or California',
+            ) ),
+
+
+
+
 ?>
 
