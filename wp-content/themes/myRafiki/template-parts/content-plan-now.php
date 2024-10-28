@@ -75,6 +75,11 @@ if ( $guide_pod->total() > 0 ) {
         }
         ?>
     </ul>
+<?php
+} else {
+    echo '<p>Location not found.</p>';
+}
+?>
 
 
 
