@@ -26,4 +26,9 @@ get_header(); ?>
     </div>
 </div>
 
+<?php
+/**
+* Description: Displays dynamic location and guide information.
+*/
+
 <?php get_footer(); ?>
