@@ -109,5 +109,12 @@ function myrafiki_register_plan_now_block_template( $post ) {
 // Hook to initialize the block template when the editor loads for pages.
 add_action( 'edit_form_after_title', 'myrafiki_register_plan_now_block_template' );
 
+function myrafiki_enqueue_plan_now_styles() {
+    if ( is_page_template( 'template-parts/content-plan-now.php' ) ) {
+        wp_enqueue_style( 'myrafiki-plan-now-css', get_template_directory_uri() . '/assets/css/plan-now.css' );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'myrafiki_enqueue_plan_now_styles' );
+
 ?>
 
