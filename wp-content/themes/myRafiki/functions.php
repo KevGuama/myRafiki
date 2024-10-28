@@ -66,8 +66,11 @@ add_action( 'wp_enqueue_scripts', 'myrafiki_enqueue_page_specific_styles' );
 
 // Register a Gutenberg block template for the Plan Now page.
 function myrafiki_register_plan_now_block_template( $post ) {
-    // Check if we're on the 'page' post type and the 'Plan Now' page by its slug or ID.
-    if
+    // Check if we're on the 'page' post type and the 'Plan Now' page by its slug or ID
+	if ( $post->post_type === 'page' && ( $post->post_name === 'plan-now' || $post->ID == YOUR_PLAN_NOW_PAGE_ID ) ) {
+
+        // Define the block template layout for the Plan Now page.
+        $
 
 ?>
 
