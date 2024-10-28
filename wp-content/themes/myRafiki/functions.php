@@ -64,42 +64,50 @@ function myrafiki_enqueue_page_specific_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'myrafiki_enqueue_page_specific_styles' );
 
-// Register a Gutenberg block template for the Plan Now page.
+// Register a Gutenberg block template specifically for the "Plan Now" page.
 function myrafiki_register_plan_now_block_template( $post ) {
-    // Check if we're on the 'page' post type and the 'Plan Now' page by its slug or ID.
-    if ( $post->post_type === 'page' && ( $post->post_name === 'plan-now' || $post->ID == 949 ) ) {
+    // Replace with your actual Plan Now page ID.
+    $plan_now_page_id = 949; // Replace YOUR_PLAN_NOW_PAGE_ID with the ID of your Plan Now page.
 
-        // Define the block template layout for the Plan Now page.
-        $template = array(
-            // Introduction section (editable in Gutenberg).
-            array( 'core/paragraph', array(
-                'placeholder' => 'Enter the introduction here for your Plan Now page...',
-            ) ),
-            // Location selection heading.
-            array( 'core/heading', array(
-                'level' => 2,
-                'content' => 'Select a Location',
-            ) ),
-            // Placeholder for location selection dropdown (custom implementation needed).
-            array( 'core/paragraph', array(
-                'content' => 'Choose Location: Nairobi or California',
-            ) ),
-            // Placeholder for guide information.
-            array( 'core/paragraph', array(
-                'placeholder' => 'Enter guide information here...',
-            ) ),
-            // Placeholder for attractions list.
-            array( 'core/list', array(
-                'placeholder' => 'List the attractions here...',
-            ) ),
-        );
-
-        // Apply the template to the 'Plan Now' page.
-        $post->post_content = serialize_blocks( $template );
+    // Check if we're editing the Plan Now page.
+    if ( $post->ID != $plan_now_page_id ) {
+        return;
     }
+
+    // Define the block template layout for the Plan Now page.
+    $post_type_object = get_post_type_object( 'page' );
+
+    if ( ! $post_type_object ) {
+        return;
+    }
+
+    $post_type_object->template = array(
+        // Introduction section (editable in Gutenberg).
+        array( 'core/paragraph', array(
+            'placeholder' => 'Enter the introduction here for your Plan Now page...',
+        ) ),
+        // Location selection heading.
+        array( 'core/heading', array(
+            'level' => 2,
+            'content' => 'Select a Location',
+        ) ),
+        // Placeholder for location dropdown.
+        array( 'core/paragraph', array(
+            'placeholder' => 'Location dropdown goes here...',
+        ) ),
+        // Placeholder for guide information.
+        array( 'core/paragraph', array(
+            'placeholder' => 'Enter guide information here...',
+        ) ),
+        // Attractions list placeholder.
+        array( 'core/list', array(
+            'placeholder' => 'List the attractions here...',
+        ) ),
+    );
 }
-// Hook to initialize the block template on admin page load.
-add_action( 'add_meta_boxes', 'myrafiki_register_plan_now_block_template' );
+
+// Hook to initialize the block template when the editor loads for pages.
+add_action( 'edit_form_after_title', 'myrafiki_register_plan_now_block_template' );
 
 ?>
 
