@@ -75,5 +75,10 @@ function myrafiki_register_plan_now_block_template( $post ) {
 array( 'core/paragraph', array(
                 'placeholder' => 'Enter the introduction here for your Plan Now page...',
             ) ),
+// Location selection heading.
+            array( 'core/heading', array(
+                'level' => 2,
+                'content' => 'Select a Location',
+            ) ),
 ?>
 
