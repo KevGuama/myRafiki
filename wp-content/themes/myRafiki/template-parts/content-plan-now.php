@@ -57,6 +57,14 @@ if ( $location_pod->total() > 0 ) {
             <li><?php echo esc_html( $attraction['top_attraction'] ); ?></li>
         <?php endforeach; ?>
     </ul>
+<!-- Display Guides for the Location -->
+<h2>Available Guides</h2>
+    <ul>
+        <?php
+        // Query to retrieve guides associated with this location
+        $guide_pod = pods('guides', array(
+            'where' => 'location_relationship.meta_value = "' . esc_sql($location_pod->id()) . '"',
+        ));
 
 
 <?php get_footer(); ?>
