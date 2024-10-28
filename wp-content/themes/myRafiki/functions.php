@@ -67,7 +67,11 @@ add_action( 'wp_enqueue_scripts', 'myrafiki_enqueue_page_specific_styles' );
 // Register block template for Plan Now page.
 function myrafiki_plan_now_block_template(){
 
-// Define the block template for the Plan Now page.
+// Register block template for Plan Now page.
+function myrafiki_plan_now_block_template() {
+    $post_type_object = get_post_type_object( 'page' );
+
+    // Define the block template for the Plan Now page.
     $post_type_object->template = array(
         array( 'core/paragraph', array(
             'placeholder' => 'Enter page introduction here...',
@@ -76,16 +80,18 @@ function myrafiki_plan_now_block_template(){
             'level' => 2,
             'content' => 'Select a location',
         ) ),
-array( 'core/select', array(
+        array( 'core/select', array(
             'options' => array( 'California', 'Nairobi' ),
             'label' => 'Choose Location',
         ) ),
-array( 'core/paragraph', array(
+        array( 'core/paragraph', array(
             'placeholder' => 'Enter guide information here...',
         ) ),
-array( 'core/list', array(
+        array( 'core/list', array(
             'placeholder' => 'List attractions here...',
         ) ),
+    );
 }
+add_action( 'init', 'myrafiki_plan_now_block_template' );
 ?>
 
