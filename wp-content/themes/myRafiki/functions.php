@@ -70,7 +70,10 @@ function myrafiki_register_plan_now_block_template( $post ) {
 	if ( $post->post_type === 'page' && ( $post->post_name === 'plan-now' || $post->ID == YOUR_PLAN_NOW_PAGE_ID ) ) {
 
         // Define the block template layout for the Plan Now page.
-        $
-
+        $template = array(
+            // Introduction section (editable in Gutenberg).
+array( 'core/paragraph', array(
+                'placeholder' => 'Enter the introduction here for your Plan Now page...',
+            ) ),
 ?>
 
