@@ -15,8 +15,8 @@ function myrafiki2_setup() {
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'wp-block-styles' );
     add_theme_support( 'align-wide' );
-
-// Register navigation menu if needed
+    
+    // Register navigation menu if needed
     register_nav_menus( array(
         'menu-1' => esc_html__( 'Primary', 'myrafiki' ),
     ) );
@@ -24,7 +24,7 @@ function myrafiki2_setup() {
 add_action( 'after_setup_theme', 'myrafiki2_setup' );
 
 // Enqueue Styles and Scripts
-function myrafiki2.0_enqueue_assets() {
+function myrafiki2_enqueue_assets() {
     wp_enqueue_style( 'myrafiki-style', get_stylesheet_uri() );
     
     // Load custom styles for individual pages
@@ -39,6 +39,7 @@ function myrafiki2.0_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'myrafiki2_enqueue_assets' );
 
 
+
 // Suppress theme update notifications in the Appearance > Themes section
 add_filter( 'pre_site_transient_update_themes', '__return_null' );
 
@@ -49,12 +50,7 @@ function myrafiki2_disable_update_notifications( $value ) {
     }
     return $value;
 }
-add_filter( 'site_transient_update_themes', 'myrafiki2.0_disable_update_notifications' );
-
-/**
-
-
-
+add_filter( 'site_transient_update_themes', 'myrafiki2_disable_update_notifications' );
 
 /**
  * Define Constants
