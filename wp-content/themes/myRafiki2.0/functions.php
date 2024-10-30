@@ -16,6 +16,13 @@ function myrafiki2_setup() {
     add_theme_support( 'wp-block-styles' );
     add_theme_support( 'align-wide' );
 
+// Register navigation menu if needed
+    register_nav_menus( array(
+        'menu-1' => esc_html__( 'Primary', 'myrafiki' ),
+    ) );
+}
+add_action( 'after_setup_theme', 'myrafiki2_setup' );
+
 
 // Suppress theme update notifications in the Appearance > Themes section
 add_filter( 'pre_site_transient_update_themes', '__return_null' );
