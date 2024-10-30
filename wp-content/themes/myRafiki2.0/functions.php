@@ -1,16 +1,29 @@
 <?php
 /**
- * Astra functions and definitions
+ * myRafiki2.0 functions and definitions
  *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package Astra
- * @since 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+
+// Suppress theme update notifications in the Appearance > Themes section
+add_filter( 'pre_site_transient_update_themes', '__return_null' );
+
+// Suppress individual update notifications for this theme specifically
+function myrafiki2_disable_update_notifications( $value ) {
+    if ( isset( $value->response['myrafiki2.0'] ) ) {
+        unset( $value->response['myrafiki2.0'] );
+    }
+    return $value;
+}
+add_filter( 'site_transient_update_themes', 'myrafiki2.0_disable_update_notifications' );
+
+/**
+
+
+
 
 /**
  * Define Constants
