@@ -8,6 +8,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+
+// Theme setup
+function myrafiki2_setup() {
+    add_theme_support( 'title-tag' );
+    add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'wp-block-styles' );
+    add_theme_support( 'align-wide' );
+
+
 // Suppress theme update notifications in the Appearance > Themes section
 add_filter( 'pre_site_transient_update_themes', '__return_null' );
 
