@@ -23,6 +23,21 @@ function myrafiki2_setup() {
 }
 add_action( 'after_setup_theme', 'myrafiki2_setup' );
 
+// Enqueue Styles and Scripts
+function myrafiki2.0_enqueue_assets() {
+    wp_enqueue_style( 'myrafiki-style', get_stylesheet_uri() );
+    
+    // Load custom styles for individual pages
+    if ( is_page_template( 'page-templates/page-home.php' ) ) {
+        wp_enqueue_style( 'myrafiki-home', get_template_directory_uri() . '/assets/css/home.css' );
+    } elseif ( is_page_template( 'page-templates/page-registration-form.php' ) ) {
+        wp_enqueue_style( 'myrafiki-registration', get_template_directory_uri() . '/assets/css/registration.css' );
+    } elseif ( is_page_template( 'page-templates/page-plan-now.php' ) ) {
+        wp_enqueue_style( 'myrafiki-plan-now', get_template_directory_uri() . '/assets/css/plan-now.css' );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'myrafiki2_enqueue_assets' );
+
 
 // Suppress theme update notifications in the Appearance > Themes section
 add_filter( 'pre_site_transient_update_themes', '__return_null' );
