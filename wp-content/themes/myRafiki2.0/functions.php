@@ -52,6 +52,13 @@ function myrafiki2_disable_update_notifications( $value ) {
 }
 add_filter( 'site_transient_update_themes', 'myrafiki2_disable_update_notifications' );
 
+
+// Load custom styles for the Plan Now page
+if ( is_page_template( 'page-templates/page-plan-now.php' ) ) {
+    wp_enqueue_style( 'myrafiki-plan-now', get_template_directory_uri() . '/assets/css/plan-now.css' );
+}
+
+
 /**
  * Define Constants
  */
