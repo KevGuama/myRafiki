@@ -43,3 +43,22 @@ get_header(); // Include the theme header
     ?>
 
  <!-- Registration form with POST method -->
+<form method="post" class="registration-form">
+        <!-- Username field -->
+        <label for="username">Username</label>
+        <input type="text" name="username" required>
+
+<!-- Email field -->
+        <label for="email">Email</label>
+        <input type="email" name="email" required>
+
+ <!-- Password field -->
+        <label for="password">Password</label>
+        <input type="password" name="password" required>
+<!-- Submit button for form submission -->
+        <input type="submit" value="Register">
+    </form>
+</div>
+
+<?php get_footer(); // Include the theme footer ?>
+
