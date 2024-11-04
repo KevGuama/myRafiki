@@ -62,6 +62,12 @@ if ( is_page_template( 'page-templates/page-plan-now.php' ) ) {
 function myrafiki_enqueue_registration_styles(){
     // Check if current page is using the 'page-registration-form.php' template
     if (is_page_template('page-registration-form.php')) {
+// Check if current page is using the 'page-registration-form.php' template
+    if (is_page_template('page-registration-form.php')) {
+        // Enqueue the custom CSS file for the registration form
+        wp_enqueue_style('myrafiki-registration-style', get_template_directory_uri() . '/assets/css/registration.css');
+    }
+}
 
 
 
