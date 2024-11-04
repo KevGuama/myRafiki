@@ -1,63 +1,62 @@
 <?php
 /**
- * Template Name: Registration Form
- * Description: A custom template for user registration.
+ * Template Name: Register Now - Editable
+ * Description: A custom Gutenberg-editable template for the "Register Now" page.
  */
 
-get_header(); // Include the theme header
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
-?>
+get_header(); ?>
 
-<div class="registration-form-container">
-    <!-- Display the page title dynamically -->
-    <h2><?php the_title(); ?></h2>
+<div class="register-now-page-template">
 
-    <?php
-    // Check if the form has been submitted via POST request
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        // Sanitize and store form inputs
-        $username = sanitize_text_field($_POST['username']);
-        $email = sanitize_email($_POST['email']);
-        $password = sanitize_text_field($_POST['password']);
+    <!-- Section 1: Gutenberg Block Editor Container -->
+    <!-- This container will allow you to add, edit, and rearrange content in the Gutenberg editor. -->
+    <div class="gutenberg-content">
+        <!-- Page content entered in Gutenberg will be displayed here. -->
+        <?php
+        // Start the WordPress loop to fetch page content.
+        while ( have_posts() ) : the_post();
 
-        // Perform validation and check for errors
-        if (username_exists($username)) {
-            // Error message if username already exists
-            echo '<p class="error">Username already exists.</p>';
-        } elseif (!is_email($email) || email_exists($email)) {
-            // Error message if email is invalid or already registered
-            echo '<p class="error">Invalid or existing email.</p>';
-        } else {
-            // Create a new user in WordPress
-            $user_id = wp_create_user($username, $password, $email);
-            if (!is_wp_error($user_id)) {
-                // Success message on successful registration
-                echo '<p class="success">Registration successful!</p>';
-            } else {
-                // Error message on registration failure
-                echo '<p class="error">There was an error in registration.</p>';
-            }
-        }
-    }
-    ?>
+            // Gutenberg content output.
+            the_content();
 
-    <!-- Registration form with POST method -->
-    <form method="post" class="registration-form">
-        <!-- Username field -->
-        <label for="username">Username</label>
-        <input type="text" name="username" required>
+        endwhile; // End of the loop.
+        ?>
+    </div>
 
-        <!-- Email field -->
-        <label for="email">Email</label>
-        <input type="email" name="email" required>
+    <!-- Section 2: Custom Registration Form -->
+    <!-- Embedding a custom form below the editable Gutenberg content -->
+    <div class="custom-registration-form">
 
-        <!-- Password field -->
-        <label for="password">Password</label>
-        <input type="password" name="password" required>
+        <h2>Register Now</h2>
+        
+        <!-- Form with POST method to send data to the current page URL -->
+        <form action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="POST">
+            <!-- Hidden fields for form security -->
+            <input type="hidden" name="action" value="myrafiki_registration_form">
+            <?php wp_nonce_field( 'myrafiki_register_nonce', 'myrafiki_register_nonce_field' ); ?>
+            
+            <!-- User Name Field -->
+            <label for="user_name">Name:</label>
+            <input type="text" id="user_name" name="user_name" required>
 
-        <!-- Submit button for form submission -->
-        <input type="submit" value="Register">
-    </form>
+            <!-- Email Address Field -->
+            <label for="user_email">Email:</label>
+            <input type="email" id="user_email" name="user_email" required>
+
+            <!-- Tour Guide Preferences Field -->
+            <label for="guide_preferences">Preferred Guide:</label>
+            <input type="text" id="guide_preferences" name="guide_preferences" required>
+
+            <!-- Submit Button -->
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
 </div>
 
-<?php get_footer(); // Include the theme footer ?>
+<?php get_footer(); ?>
