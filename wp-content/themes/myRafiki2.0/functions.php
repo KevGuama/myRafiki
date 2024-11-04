@@ -68,6 +68,11 @@ function myrafiki_enqueue_registration_styles(){
         wp_enqueue_style('myrafiki-registration-style', get_template_directory_uri() . '/assets/css/registration.css');
     }
 }
+ wp_enqueue_style('myrafiki-registration-style', get_template_directory_uri() . '/assets/css/registration.css');
+    }
+}
+// Hook the function to 'wp_enqueue_scripts' to load at the right time
+add_action('wp_enqueue_scripts', 'myrafiki_enqueue_registration_styles');
 
 
 
