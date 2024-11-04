@@ -38,3 +38,9 @@
     border-radius: 4px; /* Rounded corners */
     font-size: 1em; /* Standard font size */
 }
+
+/* Error message styling */
+.registration-form .error {
+    color: #ff0000; /* Red color for errors */
+    margin-top: 10px; /* Space above error message */
+}
