@@ -58,22 +58,17 @@ if ( is_page_template( 'page-templates/page-plan-now.php' ) ) {
     wp_enqueue_style( 'myrafiki-plan-now', get_template_directory_uri() . '/assets/css/plan-now.css' );
 }
 
+
 // Function to enqueue CSS for the Registration Form template only
-function myrafiki_enqueue_registration_styles(){
+function myrafiki_enqueue_registration_styles() {
     // Check if current page is using the 'page-registration-form.php' template
-    if (is_page_template('page-registration-form.php')) {
-// Check if current page is using the 'page-registration-form.php' template
     if (is_page_template('page-registration-form.php')) {
         // Enqueue the custom CSS file for the registration form
         wp_enqueue_style('myrafiki-registration-style', get_template_directory_uri() . '/assets/css/registration.css');
     }
 }
- wp_enqueue_style('myrafiki-registration-style', get_template_directory_uri() . '/assets/css/registration.css');
-    }
-}
 // Hook the function to 'wp_enqueue_scripts' to load at the right time
 add_action('wp_enqueue_scripts', 'myrafiki_enqueue_registration_styles');
-
 
 
 /**
