@@ -1,0 +1,6 @@
+/* Container styling for the registration form */
+.registration-form-container {
+    max-width: 600px; /* Limit form width for readability */
+    margin: 0 auto; /* Center form on the page */
+    padding: 20px; /* Add padding around form content */
+}
