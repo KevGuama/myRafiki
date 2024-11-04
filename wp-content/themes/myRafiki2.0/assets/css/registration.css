@@ -27,3 +27,14 @@
     border: 1px solid #ccc; /* Light gray border */
     border-radius: 4px; /* Rounded corners */
 }
+
+/* Submit button styling */
+.registration-form input[type="submit"] {
+    background-color: #0073aa; /* Button background color */
+    color: #fff; /* Button text color */
+    padding: 10px 20px; /* Space within the button */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 1em; /* Standard font size */
+}
