@@ -4,3 +4,9 @@
     margin: 0 auto; /* Center form on the page */
     padding: 20px; /* Add padding around form content */
 }
+
+/* Styling for form header */
+.registration-form h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px; /* Add space below the title */
+}
