@@ -28,4 +28,18 @@ get_header(); // Include the theme header
         } elseif (!is_email($email) || email_exists($email)) {
             // Error message if email is invalid or already registered
             echo '<p class="error">Invalid or existing email.</p>';
-        } else
+        } else{
+            // Create a new user in WordPress
+            $user_id = wp_create_user($username, $password, $email);
+            if (!is_wp_error($user_id)) {
+                // Success message on successful registration
+                echo '<p class="success">Registration successful!</p>';
+            } else {
+                // Error message on registration failure
+                echo '<p class="error">There was an error in registration.</p>';
+            }
+        }
+    }
+    ?>
+
+ <!-- Registration form with POST method -->
