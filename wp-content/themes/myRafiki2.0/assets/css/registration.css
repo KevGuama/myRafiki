@@ -16,3 +16,14 @@
     display: block; /* Ensure label appears above input field */
     margin: 10px 0 5px; /* Space around label */
 }
+
+/* Styling for text, email, and password fields */
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="password"] {
+    width: 100%; /* Full-width input fields */
+    padding: 10px; /* Space within input fields */
+    margin-bottom: 15px; /* Space below each input field */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+}
