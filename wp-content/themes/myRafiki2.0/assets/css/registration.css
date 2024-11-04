@@ -10,3 +10,9 @@
     font-size: 1.8em;
     margin-bottom: 20px; /* Add space below the title */
 }
+
+/* Label styling for input fields */
+.registration-form label {
+    display: block; /* Ensure label appears above input field */
+    margin: 10px 0 5px; /* Space around label */
+}
