@@ -58,6 +58,12 @@ if ( is_page_template( 'page-templates/page-plan-now.php' ) ) {
     wp_enqueue_style( 'myrafiki-plan-now', get_template_directory_uri() . '/assets/css/plan-now.css' );
 }
 
+// Function to enqueue CSS for the Registration Form template only
+function myrafiki_enqueue_registration_styles(){
+    // Check if current page is using the 'page-registration-form.php' template
+    if (is_page_template('page-registration-form.php')) {
+
+
 
 /**
  * Define Constants
