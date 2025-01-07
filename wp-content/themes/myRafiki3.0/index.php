@@ -13,3 +13,6 @@ if (have_posts()) :
         the_post(); 
         the_content(); // Display page content.
     endwhile;
+else :
+    echo '<p>' . __('No content available.', 'myrafiki') . '</p>';
+endif;
