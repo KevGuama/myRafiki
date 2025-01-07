@@ -52,3 +52,9 @@ get_footer(); // Load the footer template.
                         <?php the_excerpt(); // Displays a summary of the post content. ?>
                     </div>
                 </article>
+ <?php endwhile; ?>
+        <?php else : ?>
+            <p><?php esc_html_e('No posts found.', 'text-domain'); // Fallback message for no posts. ?></p>
+        <?php endif; ?>
+    </div>
+</main>
