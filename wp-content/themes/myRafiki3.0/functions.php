@@ -1,3 +1,9 @@
+/**
+ * myRafiki3.0 Theme Functions
+ *
+ * Handles theme setup, script and style enqueues, and other functionality.
+ */
+
 <?php
 // Ensure the file is not accessed directly.
 if (!defined('ABSPATH')) {
@@ -30,3 +36,20 @@ function myrafiki3_enqueue_assets() {
     wp_enqueue_style('myrafiki-style', get_stylesheet_uri(), array(), '1.0', 'all');
 }
 add_action('wp_enqueue_scripts', 'myrafiki3_enqueue_assets');
+
+// Theme setup function.
+function myrafiki_theme_setup() {
+    add_theme_support('title-tag'); // Adds dynamic title support.
+    add_theme_support('post-thumbnails'); // Enables featured images.
+    add_theme_support('custom-logo'); // Allows custom logos.
+    add_theme_support('html5', ['search-form', 'gallery', 'caption']); // Enables HTML5 support.
+}
+}
+add_action('after_setup_theme', 'myrafiki_theme_setup');
+
+// Enqueue styles and scripts.
+function myrafiki_enqueue_scripts() {
+    // Enqueue the main stylesheet.
+    wp_enqueue_style('myrafiki-style', get_stylesheet_uri(), [], wp_get_theme()->get('Version'));
+
+
