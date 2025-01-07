@@ -22,3 +22,10 @@ function myrafiki3_theme_setup() {
 }
 
 add_action('after_setup_theme', 'myrafiki3_theme_setup');
+
+// Enqueue theme styles and scripts.
+function myrafiki3_enqueue_assets() {
+// Enqueue main stylesheet.
+    wp_enqueue_style('myrafiki-style', get_stylesheet_uri(), array(), '1.0', 'all');
+}
+add_action('wp_enqueue_scripts', 'myrafiki3_enqueue_assets');
