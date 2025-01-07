@@ -45,3 +45,6 @@
                     'menu_class'     => 'primary-menu', // Adds CSS class for styling.
                 ));
                 ?>
+</nav>
+        </div>
+    </header>
