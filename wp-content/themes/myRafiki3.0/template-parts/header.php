@@ -27,3 +27,12 @@
                 </a>
                 <p class="site-description"><?php bloginfo('description'); // Displays the site description set in the customizer. ?></p>
             </div>
+<header class="site-header">
+        <div class="container">
+            <!-- Site Branding -->
+            <div class="site-branding">
+                <a href="<?php echo esc_url(home_url('/')); // Home URL ?>" rel="home">
+                    <img src="<?php echo get_theme_mod('custom_logo'); // Fetches the custom logo set in the customizer ?>" alt="<?php bloginfo('name'); ?>">
+                </a>
+                <p class="site-description"><?php bloginfo('description'); // Displays the site description set in the customizer. ?></p>
+            </div>
