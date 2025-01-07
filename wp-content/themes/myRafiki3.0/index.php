@@ -25,3 +25,10 @@ endif;
 
 get_footer(); // Load the footer template.
 ?>
+
+<main class="site-main">
+    <div class="container">
+        <?php if (have_posts()) : // Checks if there are posts to display. ?>
+            <h1><?php single_post_title(); // Displays the page or post title. ?></h1>
+
+            <!-- Loop Through Posts -->
