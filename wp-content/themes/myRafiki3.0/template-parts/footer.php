@@ -23,3 +23,11 @@
                     'menu_class'     => 'footer-menu', // Adds CSS class for styling.
                 ));
                 ?>
+  ?>
+            </nav>
+        </div>
+    </footer>
+
+    <?php wp_footer(); // Ensures all enqueued scripts are loaded before closing the body tag. ?>
+</body>
+</html>
