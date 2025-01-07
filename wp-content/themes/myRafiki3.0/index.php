@@ -1,4 +1,11 @@
 <?php
+/**
+ * Main Index Template
+ *
+ * This file is the fallback template for displaying posts and pages.
+ * It renders a list of posts in a blog format when no other template matches.
+ */
+<?php
 // Ensure the file is not accessed directly.
 if (!defined('ABSPATH')) {
     exit;
