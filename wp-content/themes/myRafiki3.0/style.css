@@ -30,4 +30,11 @@ footer {
     color: #aaa;
     text-align: center;
     padding: 1rem 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
