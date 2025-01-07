@@ -325,7 +325,7 @@ class WPvivid
     {
         require_once WPVIVID_PLUGIN_DIR . '/includes/class-wpvivid-i18n.php';
 		$plugin_i18n = new WPvivid_i18n();
-        add_action('plugins_loaded',array( $plugin_i18n,'load_plugin_textdomain'));
+        add_action('init',array( $plugin_i18n,'load_plugin_textdomain'));
 	}
 
     public function pre_add_remote($remote,$id)
@@ -1175,16 +1175,19 @@ class WPvivid
         $task=WPvivid_taskmanager::get_task($task_id);
         if(isset($task['setting']['is_merge']) && $task['setting']['is_merge'] == '1')
         {
-            foreach ($task['jobs'] as $job_info)
+            if(isset($task['jobs']))
             {
-                if($job_info['backup_type'] === 'backup_merge')
+                foreach ($task['jobs'] as $job_info)
                 {
-                    if(isset($job_info['zip_file']) && !empty($job_info['zip_file']))
+                    if($job_info['backup_type'] === 'backup_merge')
                     {
-                        foreach ($job_info['zip_file'] as $zip_file_name => $zip_file_info)
+                        if(isset($job_info['zip_file']) && !empty($job_info['zip_file']))
                         {
-                            if(!$this->check_backup_file_json($zip_file_name)){
-                                $check_res = false;
+                            foreach ($job_info['zip_file'] as $zip_file_name => $zip_file_info)
+                            {
+                                if(!$this->check_backup_file_json($zip_file_name)){
+                                    $check_res = false;
+                                }
                             }
                         }
                     }
@@ -1193,14 +1196,17 @@ class WPvivid
         }
         else
         {
-            foreach ($task['jobs'] as $job_info)
+            if(isset($task['jobs']))
             {
-                if(isset($job_info['zip_file']) && !empty($job_info['zip_file']))
+                foreach ($task['jobs'] as $job_info)
                 {
-                    foreach ($job_info['zip_file'] as $zip_file_name => $zip_file_info)
+                    if(isset($job_info['zip_file']) && !empty($job_info['zip_file']))
                     {
-                        if(!$this->check_backup_file_json($zip_file_name)){
-                            $check_res = false;
+                        foreach ($job_info['zip_file'] as $zip_file_name => $zip_file_info)
+                        {
+                            if(!$this->check_backup_file_json($zip_file_name)){
+                                $check_res = false;
+                            }
                         }
                     }
                 }
@@ -5541,6 +5547,7 @@ class WPvivid
         $setting_data['wpvivid_common_setting']['db_connect_method'] = $setting['db_connect_method'];
         $setting_data['wpvivid_common_setting']['retain_local'] = $setting['retain_local'];
         $setting_data['wpvivid_common_setting']['uninstall_clear_folder'] = $setting['uninstall_clear_folder'];
+        $setting_data['wpvivid_common_setting']['backup_symlink_folder'] = $setting['backup_symlink_folder'];
 
         //new
         $setting_data['wpvivid_common_setting']['compress_file_count'] = intval($setting['compress_file_count']);

@@ -239,6 +239,12 @@ class WPvivid_Snapshot_Ex
             return;
         }
         add_filter('wpvivid_added_quick_snapshot',array( $this,'added_quick_snapshot'));
+
+        $current_url = $_SERVER['REQUEST_URI'];
+        if (preg_match('/post.php?/', $current_url))
+        {
+            return;
+        }
         ?>
         <div id="wpvivid_quick_snapshot_dialog">
             <span id="wpvivid_quick_snapshot_close" class="dashicons dashicons-no" style="float:right;cursor: pointer"></span>

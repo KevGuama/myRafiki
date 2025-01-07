@@ -63,16 +63,17 @@ class Templates extends BaseRunner {
 
 			$import = $this->import_template( $id, $template_settings, $template_content );
 			if ( $import ) {
-				$results['succeed'][ $id ]   = $import;
+				$results['succeed'][ $id ]   = $import['id'];
 				$results['template_types'][] = $template_settings['type'];
 
 				if ( $template_settings['type'] === 'archive' || $template_settings['type'] === 'product_archive' || $template_settings['type'] === 'course_archive' ) {
 					$page_id = $this->create_archive_page( $template_settings, $this->manifest['platform'] );
-					if ( $page_id ) {
-						$_extra_pages['archive_settings'] = [
+					if ( $page_id && isset($template_settings['page_settings']['archive_page_id']) ) {
+						$archive_page_id = $template_settings['page_settings']['archive_page_id'];
+						$_extra_pages['archive_settings'][$archive_page_id] = [
 							'old_id'     => $id,
 							'page_id'    => $page_id,
-							'archive_id' => $import
+							'archive_id' => $archive_page_id
 						];
 					}
 				}
@@ -89,6 +90,7 @@ class Templates extends BaseRunner {
 			$progress  = floor( ( 100 * $processed ) / $total );
 			$this->log( $progress );
 
+			$results['__attachments'][ $id ] = isset($import['__attachments']) ? $import['__attachments'] : [];
 			// Add the template to the processed templates and update the session data
 			$processed_templates[] = $id;
 			$this->origin->update_progress( $processed_templates, array_merge( [ 'templates' => $results ], $_extra_pages ));
@@ -122,6 +124,7 @@ class Templates extends BaseRunner {
 		];
 
 		$meta = [];
+		$result = [];
 
 		if ( $this->manifest['platform'] == 'gutenberg' ) {
 			$meta['_wp_page_template'] = PageTemplates::TEMPLATE_HEADER_FOOTER;
@@ -136,11 +139,12 @@ class Templates extends BaseRunner {
 			$attachments = $this->json->parse_images($template_content['content']);
 
 			if (!empty($attachments)) {
-				$manifest_content = &$this->manifest['templates'][$id];
-				if(!isset($manifest_content['__attachments'])){
-					$manifest_content['__attachments'] = [];
-				}
-				$manifest_content['__attachments'] = $attachments;
+				$result['__attachments'] = $attachments;
+				// $manifest_content = &$this->manifest['templates'][$id];
+				// if(!isset($manifest_content['__attachments'])){
+				// 	$manifest_content['__attachments'] = [];
+				// }
+				// $manifest_content['__attachments'] = $attachments;
 			}
 		}
 
@@ -152,8 +156,8 @@ class Templates extends BaseRunner {
 		if($template->has_logo($template_content)){
 			$this->manifest['templates'][$id]['has_logo'] = true;
 		}
-
-		return $template->get_main_id();
+		$result['id'] = $template->get_main_id();
+		return $result;
 	}
 
 
@@ -165,6 +169,11 @@ class Templates extends BaseRunner {
 	 */
 	private function create_archive_page( $template_settings, $platform ) {
 		try {
+			$archive_page_id = $template_settings['page_settings']['archive_page_id'] ?? null;
+			if($archive_page_id && !empty($this->manifest['content']['page'][$archive_page_id])){
+				return false;
+			}
+
 			$type = $template_settings['type'];
 
 			$archive_page = wp_insert_post( [

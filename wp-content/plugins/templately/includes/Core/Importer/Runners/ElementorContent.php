@@ -93,8 +93,26 @@ class ElementorContent extends BaseRunner {
 				}
 			}
 
+			if(!empty($data['typography'])){
+				if (!empty($settings['system_typography'])) {
+					foreach ($settings['system_typography'] as $key => &$typography) {
+						if(!empty($data['typography'][$typography['_id']])){
+							$typography = array_merge($typography, $data['typography'][$typography['_id']]);
+						}
+					}
+				}
+				if (!empty($settings['custom_typography'])) {
+					foreach ($settings['custom_typography'] as $key => &$typography) {
+						if(!empty($data['typography'][$typography['_id']])){
+							$typography = array_merge($typography, $data['typography'][$typography['_id']]);
+						}
+					}
+				}
+			}
+
 			if (!empty($data['logo']['id'])) {
 				$settings['site_logo'] = $data['logo'];
+				Utils::backup_option_value( 'site_logo' );
 				$this->origin->update_imported_list('attachment', $data['logo']['id']);
 			} elseif (!empty($data['logo'])) {
 				$settings['site_logo'] = $old_logo;
@@ -106,6 +124,7 @@ class ElementorContent extends BaseRunner {
 					// If the upload was successful, use the new logo, otherwise use the old one
 					if(!empty($site_logo['id'])){
 						$settings['site_logo'] = $site_logo;
+						Utils::backup_option_value( 'site_logo' );
 						$this->origin->update_imported_list('attachment', $site_logo['id']);
 					}
 				}

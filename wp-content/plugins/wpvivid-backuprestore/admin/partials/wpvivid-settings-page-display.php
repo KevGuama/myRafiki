@@ -84,6 +84,18 @@ function wpvivid_general_settings()
         }
     }
 
+    if(!isset($general_setting['options']['wpvivid_common_setting']['backup_symlink_folder'])){
+        $backup_symlink_folder = '';
+    }
+    else{
+        if($general_setting['options']['wpvivid_common_setting']['backup_symlink_folder'] == '1'){
+            $backup_symlink_folder = 'checked';
+        }
+        else{
+            $backup_symlink_folder = '';
+        }
+    }
+
     global $wpvivid_plugin;
     $out_of_date=$wpvivid_plugin->_get_out_of_date_info();
     ?>
@@ -130,6 +142,12 @@ function wpvivid_general_settings()
             <label>
                 <input type="checkbox" option="setting" name="uninstall_clear_folder" <?php echo esc_attr($uninstall_clear_folder); ?> />
                 <span><?php echo esc_html(sprintf('Delete the /%s folder and all backups in it when deleting WPvivid Backup plugin.', $general_setting['options']['wpvivid_local_setting']['path'])); ?></span>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" option="setting" name="backup_symlink_folder" <?php echo esc_attr($backup_symlink_folder); ?> />
+                <span><?php esc_html_e('Back up symlink folders. Including symlink folders may cause backup/migration failure. Uncheck this option unless you know how symlink folders work.', 'wpvivid-backuprestore'); ?></span>
             </label>
         </div>
     </div>

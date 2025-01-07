@@ -3,9 +3,9 @@ Contributors: templately, wpdevteam, re_enter_rupok, Asif2BD, priyomukul, rahat8
 Donate link: https://templately.com
 Tags: templates, elementor template, Gutenberg template, landing page, WoCommerce Templates
 Requires at least: 5.0
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 3.1.7
+Stable tag: 3.2.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -139,6 +139,30 @@ Every month we are adding new Elementor templates, along with Gutenberg template
 
 
 == Changelog ==
+
+= 3.2.0 – 31-12-2024 =
+Added: Global Typography control for Full site import.
+Few minor bug fix & improvements.
+
+= 3.1.11 - 22/12/2024 =
+Fixed: Template importing was getting stuck on some servers.
+Few minor bug fix & improvements.
+
+= 3.1.10 – 04-12-2024 =
+Fixed: Sync issues for saved templates on Templately Cloud.
+Fixed: Archive page links were not updating in menus.
+Few minor bug fixes & improvements
+
+= 3.1.9 – 20-11-2024 =
+Fixed: Issues with importing Gutenberg template images.
+Fixed: FSI progress counter accuracy during template imports.
+Few minor bug fixes & improvements
+
+= 3.1.8 – 14-11-2024 =
+Added: WordPress 6.7 compatibility.
+Fixed: FSI revert functionality was not working properly.
+Fixed: Issues with Essential Blocks asset generation for Gutenberg templates.
+Few minor bug fixes & improvements
 
 = 3.1.7 – 27-10-2024 =
 Added: option to set specific Headers and Footers for Pages or Posts.

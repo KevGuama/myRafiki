@@ -742,7 +742,7 @@ class WPvivid_Backup_Task_2
     {
         $root_path=$this->get_backup_root($backup_type);
         $exclude_files=$this->get_backup_type_exclude_files($backup_type);
-
+        $backup_symlink_folder=$this->task['setting']['backup_symlink_folder'];
         if($root_path===false)
         {
             $ret['result']='failed';
@@ -761,7 +761,7 @@ class WPvivid_Backup_Task_2
 
                 if($backup_type=='backup_core')
                 {
-                    $folders=$this->get_empty_folders($root_path,$replace_path,$exclude_files,$this->task['options']['include_files']);
+                    $folders=$this->get_empty_folders($root_path,$replace_path,$backup_symlink_folder,$exclude_files,$this->task['options']['include_files']);
                 }
                 else if($backup_type=='backup_plugin')
                 {
@@ -772,11 +772,11 @@ class WPvivid_Backup_Task_2
                         {
                             $include_regex[]='#^'.preg_quote($this -> transfer_path(WP_PLUGIN_DIR.DIRECTORY_SEPARATOR.$plugins), '/').'#';
                         }
-                        $folders=$this->get_empty_folders($root_path,$replace_path,$exclude_files,$include_regex);
+                        $folders=$this->get_empty_folders($root_path,$replace_path,$backup_symlink_folder,$exclude_files,$include_regex);
                     }
                     else
                     {
-                        $folders=$this->get_empty_folders($root_path,$replace_path,$exclude_files);
+                        $folders=$this->get_empty_folders($root_path,$replace_path,$backup_symlink_folder,$exclude_files);
                     }
                 }
                 else if($backup_type=='backup_themes')
@@ -788,27 +788,27 @@ class WPvivid_Backup_Task_2
                         {
                             $include_regex[]='#^'.preg_quote($this -> transfer_path(get_theme_root().DIRECTORY_SEPARATOR.$themes), '/').'#';
                         }
-                        $folders=$this->get_empty_folders($root_path,$replace_path,$exclude_files,$include_regex);
+                        $folders=$this->get_empty_folders($root_path,$replace_path,$backup_symlink_folder,$exclude_files,$include_regex);
                     }
                     else
                     {
-                        $folders=$this->get_empty_folders($root_path,$replace_path,$exclude_files);
+                        $folders=$this->get_empty_folders($root_path,$replace_path,$backup_symlink_folder,$exclude_files);
                     }
                 }
                 else
                 {
-                    $folders=$this->get_empty_folders($root_path,$replace_path,$exclude_files);
+                    $folders=$this->get_empty_folders($root_path,$replace_path,$backup_symlink_folder,$exclude_files);
                 }
 
                 $cache_file_prefix=WP_CONTENT_DIR.'/'.WPvivid_Setting::get_backupdir().'/'.$this->task['options']['file_prefix'].'_'.$backup_type.'_';
 
                 if($backup_type=='backup_core')
                 {
-                    $ret=$this->create_cache_files($cache_file_prefix,$root_path,$exclude_files,$this->task['options']['include_files']);
+                    $ret=$this->create_cache_files($cache_file_prefix,$root_path,$backup_symlink_folder,$exclude_files,$this->task['options']['include_files']);
                 }
                 else if($backup_type=='backup_custom_other')
                 {
-                    $ret=$this->create_custom_other_cache_files($cache_file_prefix,$this->task['options']['custom_other_root'],$exclude_files,$this->task['options']['custom_other_include_files']);
+                    $ret=$this->create_custom_other_cache_files($cache_file_prefix,$this->task['options']['custom_other_root'],$backup_symlink_folder,$exclude_files,$this->task['options']['custom_other_include_files']);
                 }
                 else if($backup_type=='backup_plugin')
                 {
@@ -819,11 +819,11 @@ class WPvivid_Backup_Task_2
                         {
                             $include_regex[]='#^'.preg_quote($this -> transfer_path(WP_PLUGIN_DIR.DIRECTORY_SEPARATOR.$plugins), '/').'#';
                         }
-                        $ret=$this->create_cache_files($cache_file_prefix,$root_path,$exclude_files,$include_regex);
+                        $ret=$this->create_cache_files($cache_file_prefix,$root_path,$backup_symlink_folder,$exclude_files,$include_regex);
                     }
                     else
                     {
-                        $ret=$this->create_cache_files($cache_file_prefix,$root_path,$exclude_files);
+                        $ret=$this->create_cache_files($cache_file_prefix,$root_path,$backup_symlink_folder,$exclude_files);
                     }
                 }
                 else if($backup_type=='backup_themes')
@@ -835,16 +835,16 @@ class WPvivid_Backup_Task_2
                         {
                             $include_regex[]='#^'.preg_quote($this -> transfer_path(get_theme_root().DIRECTORY_SEPARATOR.$themes), '/').'#';
                         }
-                        $ret=$this->create_cache_files($cache_file_prefix,$root_path,$exclude_files,$include_regex);
+                        $ret=$this->create_cache_files($cache_file_prefix,$root_path,$backup_symlink_folder,$exclude_files,$include_regex);
                     }
                     else
                     {
-                        $ret=$this->create_cache_files($cache_file_prefix,$root_path,$exclude_files);
+                        $ret=$this->create_cache_files($cache_file_prefix,$root_path,$backup_symlink_folder,$exclude_files);
                     }
                 }
                 else
                 {
-                    $ret=$this->create_cache_files($cache_file_prefix,$root_path,$exclude_files);
+                    $ret=$this->create_cache_files($cache_file_prefix,$root_path,$backup_symlink_folder,$exclude_files);
                 }
 
                 if($ret['is_empty']===true)
@@ -868,7 +868,7 @@ class WPvivid_Backup_Task_2
         {
             if($backup_type=='backup_core')
             {
-                $folders=$this->get_empty_folders($root_path,$replace_path,$exclude_files,$this->task['options']['include_files']);
+                $folders=$this->get_empty_folders($root_path,$replace_path,$backup_symlink_folder,$exclude_files,$this->task['options']['include_files']);
             }
             else if($backup_type=='backup_plugin')
             {
@@ -879,11 +879,11 @@ class WPvivid_Backup_Task_2
                     {
                         $include_regex[]='#^'.preg_quote($this -> transfer_path(WP_PLUGIN_DIR.DIRECTORY_SEPARATOR.$plugins), '/').'#';
                     }
-                    $folders=$this->get_empty_folders($root_path,$replace_path,$exclude_files,$include_regex);
+                    $folders=$this->get_empty_folders($root_path,$replace_path,$backup_symlink_folder,$exclude_files,$include_regex);
                 }
                 else
                 {
-                    $folders=$this->get_empty_folders($root_path,$replace_path,$exclude_files);
+                    $folders=$this->get_empty_folders($root_path,$replace_path,$backup_symlink_folder,$exclude_files);
                 }
             }
             else if($backup_type=='backup_themes')
@@ -895,21 +895,21 @@ class WPvivid_Backup_Task_2
                     {
                         $include_regex[]='#^'.preg_quote($this -> transfer_path(get_theme_root().DIRECTORY_SEPARATOR.$themes), '/').'#';
                     }
-                    $folders=$this->get_empty_folders($root_path,$replace_path,$exclude_files,$include_regex);
+                    $folders=$this->get_empty_folders($root_path,$replace_path,$backup_symlink_folder,$exclude_files,$include_regex);
                 }
                 else
                 {
-                    $folders=$this->get_empty_folders($root_path,$replace_path,$exclude_files);
+                    $folders=$this->get_empty_folders($root_path,$replace_path,$backup_symlink_folder,$exclude_files);
                 }
             }
             else
             {
-                $folders=$this->get_empty_folders($root_path,$replace_path,$exclude_files);
+                $folders=$this->get_empty_folders($root_path,$replace_path,$backup_symlink_folder,$exclude_files);
             }
 
             if($backup_type=='backup_core')
             {
-                $files=$this->get_files($root_path,$exclude_files,$this->task['options']['include_files']);
+                $files=$this->get_files($root_path,$backup_symlink_folder,$exclude_files,$this->task['options']['include_files']);
             }
             else if($backup_type=='backup_plugin')
             {
@@ -920,11 +920,11 @@ class WPvivid_Backup_Task_2
                     {
                         $include_regex[]='#^'.preg_quote($this -> transfer_path(WP_PLUGIN_DIR.DIRECTORY_SEPARATOR.$plugins), '/').'#';
                     }
-                    $files=$this->get_files($root_path,$exclude_files,$include_regex);
+                    $files=$this->get_files($root_path,$backup_symlink_folder,$exclude_files,$include_regex);
                 }
                 else
                 {
-                    $files=$this->get_files($root_path,$exclude_files);
+                    $files=$this->get_files($root_path,$backup_symlink_folder,$exclude_files);
                 }
             }
             else if($backup_type=='backup_themes')
@@ -936,16 +936,16 @@ class WPvivid_Backup_Task_2
                     {
                         $include_regex[]='#^'.preg_quote($this -> transfer_path(get_theme_root().DIRECTORY_SEPARATOR.$themes), '/').'#';
                     }
-                    $files=$this->get_files($root_path,$exclude_files,$include_regex);
+                    $files=$this->get_files($root_path,$backup_symlink_folder,$exclude_files,$include_regex);
                 }
                 else
                 {
-                    $files=$this->get_files($root_path,$exclude_files);
+                    $files=$this->get_files($root_path,$backup_symlink_folder,$exclude_files);
                 }
             }
             else
             {
-                $files=$this->get_files($root_path,$exclude_files);
+                $files=$this->get_files($root_path,$backup_symlink_folder,$exclude_files);
             }
 
             $replace_path=$this->get_replace_path($backup_type);
@@ -1084,16 +1084,16 @@ class WPvivid_Backup_Task_2
         }
     }
 
-    public function get_empty_folders($root_path,$replace_path,$exclude_files=array(),$include_files=array())
+    public function get_empty_folders($root_path,$replace_path,$backup_symlink_folder=false,$exclude_files=array(),$include_files=array())
     {
         $folder=array();
         $exclude_regex=array_merge($this->task['options']['exclude_files'],$exclude_files);
         $root_path=untrailingslashit($root_path);
-        $this->_get_folders($root_path,$replace_path,$folder,$exclude_regex,$include_files);
+        $this->_get_folders($root_path,$replace_path,$folder,$backup_symlink_folder,$exclude_regex,$include_files);
         return $folder;
     }
 
-    public function _get_folders($path,$replace_path,&$folders,$exclude_regex=array(),$include_regex=array())
+    public function _get_folders($path,$replace_path,&$folders,$backup_symlink_folder=false,$exclude_regex=array(),$include_regex=array())
     {
         $handler = opendir($path);
 
@@ -1104,14 +1104,17 @@ class WPvivid_Backup_Task_2
         {
             if ($filename != "." && $filename != "..")
             {
-                if (is_dir($path . '/' . $filename) && !@is_link($path . '/' . $filename))
+                if (is_dir($path . '/' . $filename))
                 {
-                    if($this->regex_match($exclude_regex, $this->transfer_path($path . '/' . $filename), 0))
+                    if($backup_symlink_folder == 1 || ($backup_symlink_folder == 0 && !@is_link($path . '/' . $filename)))
                     {
-                        if ($this->regex_match($include_regex, $path . '/' . $filename, 1))
+                        if($this->regex_match($exclude_regex, $this->transfer_path($path . '/' . $filename), 0))
                         {
-                            $folders[]=str_replace($replace_path,'',$this->transfer_path($path . '/' . $filename));
-                            $this->_get_folders($path . '/' . $filename,$replace_path,$folders,$exclude_regex,$include_regex);
+                            if ($this->regex_match($include_regex, $path . '/' . $filename, 1))
+                            {
+                                $folders[]=str_replace($replace_path,'',$this->transfer_path($path . '/' . $filename));
+                                $this->_get_folders($path . '/' . $filename,$replace_path,$folders,$backup_symlink_folder,$exclude_regex,$include_regex);
+                            }
                         }
                     }
                 }
@@ -1135,7 +1138,7 @@ class WPvivid_Backup_Task_2
         return $zip->addEmptyDir($zip_file_name,$folders);
     }
 
-    public function create_cache_files($file_prefix,$root_path,$exclude_files=array(),$include_files=array())
+    public function create_cache_files($file_prefix,$root_path,$backup_symlink_folder=false,$exclude_files=array(),$include_files=array())
     {
         $number=1;
         $cache_file_handle=false;
@@ -1149,7 +1152,7 @@ class WPvivid_Backup_Task_2
 
         $skip_files_time=0;
 
-        $files=$this->get_file_cache($root_path,$file_prefix,$cache_file_handle,$max_cache_file_size,$number,$exclude_regex,$include_files,$exclude_file_size,$skip_files_time);
+        $files=$this->get_file_cache($root_path,$file_prefix,$cache_file_handle,$max_cache_file_size,$number,$backup_symlink_folder,$exclude_regex,$include_files,$exclude_file_size,$skip_files_time);
 
         if($this->current_job!==false)
         {
@@ -1183,7 +1186,7 @@ class WPvivid_Backup_Task_2
         return $empty;
     }
 
-    public function create_custom_other_cache_files($file_prefix,$custom_other_root,$exclude_files=array(),$include_files=array())
+    public function create_custom_other_cache_files($file_prefix,$custom_other_root,$backup_symlink_folder=false,$exclude_files=array(),$include_files=array())
     {
         $number=1;
         $cache_file_handle=false;
@@ -1205,7 +1208,7 @@ class WPvivid_Backup_Task_2
         $files=array();
         foreach ($custom_other_root as $root_path)
         {
-            $files1=$this->get_file_cache($root_path,$file_prefix,$cache_file_handle,$max_cache_file_size,$number,$exclude_regex,$include_files,$exclude_file_size,$skip_files_time);
+            $files1=$this->get_file_cache($root_path,$file_prefix,$cache_file_handle,$max_cache_file_size,$number,$backup_symlink_folder,$exclude_regex,$include_files,$exclude_file_size,$skip_files_time);
             $files=array_merge($files,$files1);
         }
 
@@ -1427,7 +1430,7 @@ class WPvivid_Backup_Task_2
         return $ret;
     }
 
-    public function get_file_cache($path,$cache_prefix,&$cache_file_handle,$max_cache_file_size,&$number,$exclude_files,$include_files,$exclude_file_size,$skip_files_time)
+    public function get_file_cache($path,$cache_prefix,&$cache_file_handle,$max_cache_file_size,&$number,$backup_symlink_folder,$exclude_files,$include_files,$exclude_file_size,$skip_files_time)
     {
         $files=array();
 
@@ -1446,14 +1449,17 @@ class WPvivid_Backup_Task_2
         {
             if ($filename != "." && $filename != "..")
             {
-                if (is_dir($path . '/' . $filename) && !@is_link($path . '/' . $filename))
+                if (is_dir($path . '/' . $filename))
                 {
-                    if($this->regex_match($exclude_files, $this->transfer_path($path . '/' . $filename), 0))
+                    if($backup_symlink_folder == 1 || ($backup_symlink_folder == 0 && !@is_link($path . '/' . $filename)))
                     {
-                        if ($this->regex_match($include_files, $path . '/' . $filename, 1))
+                        if($this->regex_match($exclude_files, $this->transfer_path($path . '/' . $filename), 0))
                         {
-                            $files2=$this->get_file_cache($path . '/' . $filename,$cache_prefix,$cache_file_handle,$max_cache_file_size,$number,$exclude_files,$include_files,$exclude_file_size,$skip_files_time);
-                            $files=array_merge($files,$files2);
+                            if ($this->regex_match($include_files, $path . '/' . $filename, 1))
+                            {
+                                $files2=$this->get_file_cache($path . '/' . $filename,$cache_prefix,$cache_file_handle,$max_cache_file_size,$number,$backup_symlink_folder,$exclude_files,$include_files,$exclude_file_size,$skip_files_time);
+                                $files=array_merge($files,$files2);
+                            }
                         }
                     }
                 }
@@ -1461,41 +1467,44 @@ class WPvivid_Backup_Task_2
                 {
                     if($this->regex_match($exclude_files, $this->transfer_path($path . '/' . $filename), 0))
                     {
-                        if(is_readable($path . '/' . $filename) && !@is_link($path . '/' . $filename))
+                        if(is_readable($path . '/' . $filename))
                         {
-                            if ($exclude_file_size != 0)
+                            if($backup_symlink_folder == 1 || ($backup_symlink_folder == 0 && !@is_link($path . '/' . $filename)))
                             {
-                                if (filesize($path . '/' . $filename) < $exclude_file_size * 1024 * 1024)
+                                if ($exclude_file_size != 0)
                                 {
-                                    $add=true;
-                                }
-                                else
-                                {
-                                    $add=false;
-                                }
-                            }
-                            else
-                            {
-                                $add=true;
-                            }
-
-                            if($add)
-                            {
-                                if($skip_files_time>0)
-                                {
-                                    $file_time=filemtime($path . '/' . $filename);
-                                    if($file_time>0&&$file_time>$skip_files_time)
+                                    if (filesize($path . '/' . $filename) < $exclude_file_size * 1024 * 1024)
                                     {
-                                        $line = $this->transfer_path($path . '/' . $filename).PHP_EOL;
-                                        fwrite($cache_file_handle, $line);
+                                        $add=true;
+                                    }
+                                    else
+                                    {
+                                        $add=false;
                                     }
                                 }
                                 else
                                 {
-                                    $line = $this->transfer_path($path . '/' . $filename).PHP_EOL;
-                                    fwrite($cache_file_handle, $line);
+                                    $add=true;
                                 }
 
+                                if($add)
+                                {
+                                    if($skip_files_time>0)
+                                    {
+                                        $file_time=filemtime($path . '/' . $filename);
+                                        if($file_time>0&&$file_time>$skip_files_time)
+                                        {
+                                            $line = $this->transfer_path($path . '/' . $filename).PHP_EOL;
+                                            fwrite($cache_file_handle, $line);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        $line = $this->transfer_path($path . '/' . $filename).PHP_EOL;
+                                        fwrite($cache_file_handle, $line);
+                                    }
+
+                                }
                             }
                         }
                     }
@@ -1847,7 +1856,7 @@ class WPvivid_Backup_Task_2
         return $plugins_list;
     }
 
-    public function get_files($root_path,$exclude_files=array(),$include_files=array())
+    public function get_files($root_path,$backup_symlink_folder=false,$exclude_files=array(),$include_files=array())
     {
         $files=array();
         $exclude_regex=array_merge($this->task['options']['exclude_files'],$exclude_files);
@@ -1863,12 +1872,12 @@ class WPvivid_Backup_Task_2
             $skip_files_time=0;
         }
 
-        $this->_get_files($root_path,$files,$exclude_regex,$include_files,$exclude_file_size,$skip_files_time);
+        $this->_get_files($root_path,$files,$backup_symlink_folder,$exclude_regex,$include_files,$exclude_file_size,$skip_files_time);
 
         return $files;
     }
 
-    public function _get_files($path,&$files,$exclude_regex,$include_regex,$exclude_file_size,$skip_files_time)
+    public function _get_files($path,&$files,$backup_symlink_folder,$exclude_regex,$include_regex,$exclude_file_size,$skip_files_time)
     {
         $handler = opendir($path);
 
@@ -1879,24 +1888,50 @@ class WPvivid_Backup_Task_2
         {
             if ($filename != "." && $filename != "..")
             {
-                if (is_dir($path . '/' . $filename) && !@is_link($path . '/' . $filename))
+                if (is_dir($path . '/' . $filename))
                 {
-                    if($this->regex_match($exclude_regex, $this->transfer_path($path . '/' . $filename), 0))
+                    if($backup_symlink_folder == 1 || ($backup_symlink_folder == 0 && !@is_link($path . '/' . $filename)))
                     {
-                        if ($this->regex_match($include_regex, $path . '/' . $filename, 1))
+                        if($this->regex_match($exclude_regex, $this->transfer_path($path . '/' . $filename), 0))
                         {
-                            $this->_get_files($path . '/' . $filename,$files,$exclude_regex,$include_regex,$exclude_file_size,$skip_files_time);
+                            if ($this->regex_match($include_regex, $path . '/' . $filename, 1))
+                            {
+                                $this->_get_files($path . '/' . $filename,$files,$backup_symlink_folder,$exclude_regex,$include_regex,$exclude_file_size,$skip_files_time);
+                            }
                         }
                     }
                 }
                 else
                 {
-                    if(is_readable($path . '/' . $filename) && !@is_link($path . '/' . $filename))
+                    if(is_readable($path . '/' . $filename))
                     {
-                        if($skip_files_time>0)
+                        if($backup_symlink_folder == 1 || ($backup_symlink_folder == 0 && !@is_link($path . '/' . $filename)))
                         {
-                            $file_time=filemtime($path . '/' . $filename);
-                            if($file_time>0&&$file_time>$skip_files_time)
+                            if($skip_files_time>0)
+                            {
+                                $file_time=filemtime($path . '/' . $filename);
+                                if($file_time>0&&$file_time>$skip_files_time)
+                                {
+                                    if ($exclude_file_size == 0)
+                                    {
+                                        if($this->regex_match($exclude_regex, $this->transfer_path($path . '/' . $filename), 0))
+                                        {
+                                            $files[]=$this->transfer_path($path . '/' . $filename);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if($this->regex_match($exclude_regex, $this->transfer_path($path . '/' . $filename), 0))
+                                        {
+                                            if (filesize($path . '/' . $filename) < $exclude_file_size * 1024 * 1024)
+                                            {
+                                                $files[]=$this->transfer_path($path . '/' . $filename);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else
                             {
                                 if ($exclude_file_size == 0)
                                 {
@@ -1917,27 +1952,6 @@ class WPvivid_Backup_Task_2
                                 }
                             }
                         }
-                        else
-                        {
-                            if ($exclude_file_size == 0)
-                            {
-                                if($this->regex_match($exclude_regex, $this->transfer_path($path . '/' . $filename), 0))
-                                {
-                                    $files[]=$this->transfer_path($path . '/' . $filename);
-                                }
-                            }
-                            else
-                            {
-                                if($this->regex_match($exclude_regex, $this->transfer_path($path . '/' . $filename), 0))
-                                {
-                                    if (filesize($path . '/' . $filename) < $exclude_file_size * 1024 * 1024)
-                                    {
-                                        $files[]=$this->transfer_path($path . '/' . $filename);
-                                    }
-                                }
-                            }
-                        }
-
                     }
                 }
             }

@@ -43,6 +43,7 @@ class FullSiteImport extends Base {
 		$this->add_ajax_action('import_info', $this);
 		$this->add_ajax_action('import_close_feedback_modal', $this);
 		$this->add_ajax_action('feedback_form', $this);
+		$this->add_ajax_action('google_font', $this);
 
 		add_action('admin_init', [$this, 'admin_init']);
 		// add_action('admin_notices', [$this, 'add_revert_button']);
@@ -100,7 +101,7 @@ class FullSiteImport extends Base {
 		update_option(self::SESSION_OPTION_KEY, $data);
 
 		delete_option('templately_fsi_imported_list');
-		delete_transient('templately_fsi_log');
+		delete_option('templately_fsi_log');
 
 		wp_send_json_success([
 			'is_lightspeed' => !Helper::should_flush(),
@@ -170,16 +171,12 @@ class FullSiteImport extends Base {
 			wp_send_json_error($response->get_error_message());
 		}
 
-		$body = wp_remote_retrieve_body($response);
-		$data = json_decode($body, true);
-
 		if (wp_remote_retrieve_response_code($response) != 200 && wp_remote_retrieve_response_code($response) != 201) {
-			if (isset($data['status'], $data['message']) && $data['status'] === 'error') {
-				wp_send_json_error($data['message']);
-			}
-
 			wp_send_json_error('API request failed with response code ' . wp_remote_retrieve_response_code($response));
 		}
+
+		$body = wp_remote_retrieve_body($response);
+		$data = json_decode($body, true);
 
 		if (!isset($data['status']) || $data['status'] !== 'success') {
 			wp_send_json_error('API response indicates failure.');
@@ -333,7 +330,7 @@ class FullSiteImport extends Base {
 			exit;
 		}
 
-		// delete_transient( 'templately_fsi_log' );
+		// delete_option( 'templately_fsi_log' );
 
 		$this->sse_message( [
 			'type'    => 'start',
@@ -350,6 +347,7 @@ class FullSiteImport extends Base {
 
 			$this->request_params = $this->get_session_data();
 			$this->initialize_props();
+			$this->add_revert_hooks();
 			$progress = $this->request_params['progress'] ?? [];
 
 			$_id = isset($this->request_params['id']) ? (int) $this->request_params['id'] : null;
@@ -359,6 +357,12 @@ class FullSiteImport extends Base {
 			}
 
 			if(empty($progress['download_zip'])){
+				//clear previous revert backup
+				$options = Utils::get_backup_options();
+				foreach ($options as $key => $value) {
+					delete_option("__templately_$key");
+				}
+
 				/**
 				 * Check Writing Permission
 				 */
@@ -420,7 +424,7 @@ class FullSiteImport extends Base {
 			/**
 			 * Should Revert Old Data
 			 */
-			$this->revert();
+			// $this->revert();
 
 			/**
 			 * Platform Based Templates Import
@@ -440,12 +444,12 @@ class FullSiteImport extends Base {
 
 		// if($_GET['part'] === 'import'){
 			// TODO: cleanup
-			$this->clear_session_data();
+			// $this->clear_session_data();
 		// }
 	}
 
 	public function import_status(){
-		$log = get_transient( 'templately_fsi_log' );
+		$log = get_option( 'templately_fsi_log' );
 
 		if(!empty($log) && is_array($log) && isset($_GET['lastLogIndex'])){
 			$lastLogIndex = (int) $_GET['lastLogIndex'];
@@ -1081,13 +1085,9 @@ class FullSiteImport extends Base {
 		add_action('registered_taxonomy', function ($taxonomy, $object_type, $taxonomy_object) {
 			$this->update_imported_list('taxonomy', $taxonomy);
 		}, 10, 3);
-
-		$options = Utils::get_backup_options();
-		if (!empty($options) && is_array($options)) {
-			foreach ($options as $key => $value) {
-				delete_option("__templately_$key");
-			}
-		}
+		add_action('fluentform/form_imported', function ($formId){
+			$this->update_imported_list('fluentform', $formId);
+		}, 10, 1);
 	}
 
 	public static function has_revert(){
@@ -1179,6 +1179,11 @@ class FullSiteImport extends Base {
 						case 'taxonomy':
 							// Taxonomies cannot be directly deleted. Consider de-registering it.
 							break;
+						case 'fluentform':
+							if(class_exists('\FluentForm\App\Models\Form')){
+								\FluentForm\App\Models\Form::remove($item_id);
+							}
+							break;
 					}
 				}
 			}
@@ -1196,36 +1201,45 @@ class FullSiteImport extends Base {
 		wp_send_json_error([ 'options' => $options_deleted, 'imported_list' => $imported_list_deleted, 'site_url' => home_url() ]);
 	}
 
-	/**
-	 * Adds "Import" button on module list page
-	 */
-	public function add_revert_button() {
-		$screen = get_current_screen();
-		// Not our post type, exit earlier
-		// You can remove this if condition if you don't have any specific post type to restrict to.
-		if ('templately_library' != $screen->post_type) {
-			return;
+	public function google_font() {
+		$result = get_transient('templately-google-fonts');
+
+		if (false == $result) {
+			$response = wp_remote_get($this->get_api_url('v2', 'google-font'), [
+				'timeout' => 30,
+				'headers' => [
+					'Authorization'        => 'Bearer ' . $this->api_key,
+					'x-templately-ip'      => Helper::get_ip(),
+					'x-templately-url'     => home_url( '/' ),
+					'x-templately-version' => TEMPLATELY_VERSION,
+				]
+			]);
+
+			if (is_wp_error($response)) {
+				wp_send_json_error($response->get_error_message());
+			}
+
+			if (wp_remote_retrieve_response_code($response) != 200) {
+				wp_send_json_error('API request failed with response code ' . wp_remote_retrieve_response_code($response));
+			}
+
+			$body = wp_remote_retrieve_body($response);
+			$data = json_decode($body, true);
+
+			if (!isset($data['status']) || $data['status'] !== 'success') {
+				wp_send_json_error('API response indicates failure.');
+			}
+
+			if (!isset($data['data'])) {
+				wp_send_json_error('API response missing data.');
+			}
+
+			$result = $data['data'];
+			set_transient('templately-google-fonts', $result, DAY_IN_SECONDS);
 		}
 
-		// Generate a nonce with a unique action name for security
-		$revert_nonce = wp_create_nonce('templately_pack_import_revert_nonce');
-
-		// Build the URL with the nonce
-		$revert_url = add_query_arg('action', 'templately_pack_import_revert', admin_url('admin-ajax.php'));
-		$revert_url = add_query_arg('_wpnonce', $revert_nonce, $revert_url);
-		?>
-
-		<div class="templately-fsi-revert-wrapper clearfix" style="clear: both; background: #fff; padding: 20px; display: none;">
-			<div class="templately-fsi-revert-notice__content">
-				<h3>Revert to previous website</h3>
-
-				<p>This usually takes a few moments. Please don’t close the window until the process in finished.</p>
-
-				<div class="templately-fsi-revert-notice__actions">
-					<a href="<?php echo $revert_url;?>" class="button"><span>Revert Now</span></a>
-				</div>
-			</div>
-		</div>
-		<?php
+		wp_send_json_success($result);
 	}
+
+
 }
