@@ -7,14 +7,14 @@
  */
 ?>
 
-<footer class="site-footer">
+    <footer class="site-footer">
         <div class="container">
             <p>
                 &copy; <?php echo date('Y'); // Displays the current year. ?> 
                 <?php bloginfo('name'); // Displays the site name. ?>. All rights reserved.
             </p>
 
-<!-- Footer Menu -->
+            <!-- Footer Menu -->
             <nav class="footer-navigation">
                 <?php
                 // Displays the footer navigation menu.
@@ -23,7 +23,6 @@
                     'menu_class'     => 'footer-menu', // Adds CSS class for styling.
                 ));
                 ?>
-  ?>
             </nav>
         </div>
     </footer>
