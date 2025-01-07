@@ -36,3 +36,12 @@
                 </a>
                 <p class="site-description"><?php bloginfo('description'); // Displays the site description set in the customizer. ?></p>
             </div>
+ <!-- Navigation Menu -->
+            <nav class="main-navigation">
+                <?php
+                // Displays the primary navigation menu.
+                wp_nav_menu(array(
+                    'theme_location' => 'primary', // Specifies the menu location.
+                    'menu_class'     => 'primary-menu', // Adds CSS class for styling.
+                ));
+                ?>
