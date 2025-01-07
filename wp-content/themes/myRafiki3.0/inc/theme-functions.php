@@ -16,3 +16,4 @@ function myrafiki3_widgets_init() {
         'after_title'   => '</h2>',
     ));
 }
+add_action('widgets_init', 'myrafiki3_widgets_init');
