@@ -25,3 +25,9 @@ header {
     text-align: center;
 }
 
+footer {
+    background-color: #222;
+    color: #aaa;
+    text-align: center;
+    padding: 1rem 0;
+
