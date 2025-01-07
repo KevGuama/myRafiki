@@ -58,3 +58,5 @@ get_footer(); // Load the footer template.
         <?php endif; ?>
     </div>
 </main>
+
+<?php get_footer(); // Loads the footer template. ?>
