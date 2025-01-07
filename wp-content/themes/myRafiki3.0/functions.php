@@ -20,3 +20,5 @@ function myrafiki3_theme_setup() {
         'primary' => __('Primary Menu', 'myrafiki'),
     ));
 }
+
+add_action('after_setup_theme', 'myrafiki3_theme_setup');
