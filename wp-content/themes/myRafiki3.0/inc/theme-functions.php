@@ -1,4 +1,12 @@
 <?php
+/**
+ * widget area
+ *
+ * A dedicated file for modular functions like registering widget areas.
+ */
+?>
+
+<?php
 // Prevent direct access to the file.
 if (!defined('ABSPATH')) {
     exit;
