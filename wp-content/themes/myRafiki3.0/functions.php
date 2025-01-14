@@ -41,3 +41,15 @@ function myrafiki3_enqueue_assets() {
     wp_enqueue_script('myrafiki-scripts', get_template_directory_uri() . '/assets/js/scripts.js', ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', 'myrafiki3_enqueue_assets');
+
+
+<?php
+// Register the Custom Post Type (CPT) for Tour Guides.
+function myrafiki_register_tour_guides_cpt() {
+    $labels = array(
+        'name'               => __('Tour Guides', 'myrafiki'),
+        'singular_name'      => __('Tour Guide', 'myrafiki'),
+        'menu_name'          => __('Tour Guides', 'myrafiki'),
+        'name_admin_bar'     => __('Tour Guide', 'myrafiki'),
+
+
