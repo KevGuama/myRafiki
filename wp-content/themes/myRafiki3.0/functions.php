@@ -51,5 +51,16 @@ function myrafiki_register_tour_guides_cpt() {
         'singular_name'      => __('Tour Guide', 'myrafiki'),
         'menu_name'          => __('Tour Guides', 'myrafiki'),
         'name_admin_bar'     => __('Tour Guide', 'myrafiki'),
+	'add_new'            => __('Add New', 'myrafiki'),
+        'add_new_item'       => __('Add New Tour Guide', 'myrafiki'),
+        'new_item'           => __('New Tour Guide', 'myrafiki'),
+        'edit_item'          => __('Edit Tour Guide', 'myrafiki'),
+        'view_item'          => __('View Tour Guide', 'myrafiki'),
+        'all_items'          => __('All Tour Guides', 'myrafiki'),
+        'search_items'       => __('Search Tour Guides', 'myrafiki'),
+        'not_found'          => __('No Tour Guides found.', 'myrafiki'),
+        'not_found_in_trash' => __('No Tour Guides found in Trash.', 'myrafiki'),
+    );
+
 
 
