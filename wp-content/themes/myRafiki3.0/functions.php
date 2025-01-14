@@ -62,5 +62,21 @@ function myrafiki_register_tour_guides_cpt() {
         'not_found_in_trash' => __('No Tour Guides found in Trash.', 'myrafiki'),
     );
 
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'has_archive'        => true,
+        'show_in_rest'       => true, // Enables Gutenberg support.
+        'supports'           => array('title', 'editor', 'thumbnail'),
+        'menu_icon'          => 'dashicons-businessman',
+        'rewrite'            => array('slug' => 'tour-guides'),
+    );
+    
+
+register_post_type('tour_guides', $args);
+}
+add_action('init', 'myrafiki_register_tour_guides_cpt');
+
+
 
 
