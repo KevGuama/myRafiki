@@ -46,37 +46,37 @@ add_action('wp_enqueue_scripts', 'myrafiki3_enqueue_assets');
 <?php
 // Register the Custom Post Type (CPT) for Tour Guides.
 function myrafiki_register_tour_guides_cpt() {
+    // Labels for the Tour Guides CPT to be displayed in the WordPress admin interface.
     $labels = array(
-        'name'               => __('Tour Guides', 'myrafiki'),
-        'singular_name'      => __('Tour Guide', 'myrafiki'),
-        'menu_name'          => __('Tour Guides', 'myrafiki'),
-        'name_admin_bar'     => __('Tour Guide', 'myrafiki'),
-	'add_new'            => __('Add New', 'myrafiki'),
-        'add_new_item'       => __('Add New Tour Guide', 'myrafiki'),
-        'new_item'           => __('New Tour Guide', 'myrafiki'),
-        'edit_item'          => __('Edit Tour Guide', 'myrafiki'),
-        'view_item'          => __('View Tour Guide', 'myrafiki'),
-        'all_items'          => __('All Tour Guides', 'myrafiki'),
-        'search_items'       => __('Search Tour Guides', 'myrafiki'),
-        'not_found'          => __('No Tour Guides found.', 'myrafiki'),
-        'not_found_in_trash' => __('No Tour Guides found in Trash.', 'myrafiki'),
+        'name'               => __('Tour Guides', 'myrafiki'), // Plural name for the CPT.
+        'singular_name'      => __('Tour Guide', 'myrafiki'), // Singular name for a single item.
+        'menu_name'          => __('Tour Guides', 'myrafiki'), // Name displayed in the admin menu.
+        'name_admin_bar'     => __('Tour Guide', 'myrafiki'), // Name displayed in the admin bar.
+        'add_new'            => __('Add New', 'myrafiki'), // Label for the "Add New" button.
+        'add_new_item'       => __('Add New Tour Guide', 'myrafiki'), // Label for adding a new tour guide.
+        'new_item'           => __('New Tour Guide', 'myrafiki'), // Label for a new item.
+        'edit_item'          => __('Edit Tour Guide', 'myrafiki'), // Label for editing an existing tour guide.
+        'view_item'          => __('View Tour Guide', 'myrafiki'), // Label for viewing a tour guide.
+        'all_items'          => __('All Tour Guides', 'myrafiki'), // Label for viewing all tour guides.
+        'search_items'       => __('Search Tour Guides', 'myrafiki'), // Label for searching tour guides.
+        'not_found'          => __('No Tour Guides found.', 'myrafiki'), // Message when no tour guides are found.
+        'not_found_in_trash' => __('No Tour Guides found in Trash.', 'myrafiki'), // Message for empty trash.
     );
 
+    // Arguments that define the behavior and features of the Tour Guides CPT.
     $args = array(
-        'labels'             => $labels,
-        'public'             => true,
-        'has_archive'        => true,
-        'show_in_rest'       => true, // Enables Gutenberg support.
-        'supports'           => array('title', 'editor', 'thumbnail'),
-        'menu_icon'          => 'dashicons-businessman',
-        'rewrite'            => array('slug' => 'tour-guides'),
+        'labels'             => $labels, // Assign the labels array.
+        'public'             => true, // Make the CPT publicly accessible on the frontend and admin.
+        'has_archive'        => true, // Enable archive pages for the CPT.
+        'show_in_rest'       => true, // Enable Gutenberg editor and REST API support.
+        'supports'           => array('title', 'editor', 'thumbnail'), // Enable support for title, editor, and featured image.
+        'menu_icon'          => 'dashicons-businessman', // Icon to represent the CPT in the admin menu.
+        'rewrite'            => array('slug' => 'tour-guides'), // Custom slug for the CPT URL.
     );
-    
 
-register_post_type('tour_guides', $args);
+    // Register the custom post type with the provided arguments.
+    register_post_type('tour_guides', $args);
 }
+
+// Hook the function to the 'init' action to ensure it runs when WordPress initializes.
 add_action('init', 'myrafiki_register_tour_guides_cpt');
-
-
-
-
