@@ -79,7 +79,7 @@ function myrafiki_register_tour_guides_cpt() {
 // Hook the function to the 'init' action to ensure it runs when WordPress initializes.
 add_action('init', 'myrafiki_register_tour_guides_cpt');
 
-
+// Step: Adding Custom Fields to the Tour Guides CPT
 // Add meta boxes to the Tour Guides CPT.
 function myrafiki_add_tour_guide_meta_boxes() {
     add_meta_box(
@@ -91,3 +91,18 @@ function myrafiki_add_tour_guide_meta_boxes() {
         'high' // Priority of the meta box.
     );
 }
+add_action('add_meta_boxes', 'myrafiki_add_tour_guide_meta_boxes');
+
+// Callback function to render the meta box.
+function myrafiki_tour_guide_meta_box_callback($post) {
+    // Add a nonce field for security.
+    wp_nonce_field('myrafiki_save_tour_guide_meta', 'myrafiki_tour_guide_nonce');
+
+    // Retrieve current values (if any) for each field.
+    $specialty = get_post_meta($post->ID, '_guide_specialty', true);
+    $phone = get_post_meta($post->ID, '_guide_phone', true);
+    $email = get_post_meta($post->ID, '_guide_email', true);
+    $languages = get_post_meta($post->ID, '_guide_languages', true);
+    $experience = get_post_meta($post->ID, '_guide_experience', true);
+    $availability = get_post_meta($post->ID, '_guide_availability', true);
+
