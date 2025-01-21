@@ -113,4 +113,13 @@ function myrafiki_tour_guide_meta_box_callback($post) {
     $languages = get_post_meta($post->ID, '_guide_languages', true);
     $experience = get_post_meta($post->ID, '_guide_experience', true);
     $availability = get_post_meta($post->ID, '_guide_availability', true);
+    // Render form fields.
+    ?>
+    <p>
+        <label for="guide_specialty"><?php _e('Guide Specialty:', 'myrafiki'); ?></label>
+        <select id="guide_specialty" name="guide_specialty">
+            <option value="safari" <?php selected($specialty, 'safari'); ?>><?php _e('Safari', 'myrafiki'); ?></option>
+            <option value="mountain_trekking" <?php selected($specialty, 'mountain_trekking'); ?>><?php _e('Mountain Trekking', 'myrafiki'); ?></option>
+            <option value="cultural_tours" <?php selected($specialty, 'cultural_tours'); ?>><?php _e('Cultural Tours', 'myrafiki'); ?></option>
+        </select>
 
