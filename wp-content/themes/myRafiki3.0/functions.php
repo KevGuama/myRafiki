@@ -78,3 +78,16 @@ function myrafiki_register_tour_guides_cpt() {
 
 // Hook the function to the 'init' action to ensure it runs when WordPress initializes.
 add_action('init', 'myrafiki_register_tour_guides_cpt');
+
+
+// Add meta boxes to the Tour Guides CPT.
+function myrafiki_add_tour_guide_meta_boxes() {
+    add_meta_box(
+        'tour_guide_details', // Unique ID for the meta box.
+        __('Tour Guide Details', 'myrafiki'), // Title of the meta box.
+        'myrafiki_tour_guide_meta_box_callback', // Callback function to render the meta box.
+        'tour_guides', // Post type to which this meta box applies.
+        'normal', // Context: where to display (normal, side, advanced).
+        'high' // Priority of the meta box.
+    );
+}
