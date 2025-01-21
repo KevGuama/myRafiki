@@ -153,4 +153,7 @@ function myrafiki_save_tour_guide_meta($post_id) {
     if (!isset($_POST['myrafiki_tour_guide_nonce']) || !wp_verify_nonce($_POST['myrafiki_tour_guide_nonce'], 'myrafiki_save_tour_guide_meta')) {
         return;
     }
-
+// Skip saving during autosave or if the user lacks permission.
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE || !current_user_can('edit_post', $post_id)) {
+        return;
+    }
