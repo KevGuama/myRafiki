@@ -47,25 +47,16 @@ get_footer();
  * Any additional content or blocks added in Gutenberg.
 */
 
-// Get the header.
+// Include the header template.
 get_header();
 
-// Start the Loop to fetch the current post's data.
+// Start the WordPress Loop to fetch data for the current post.
 if (have_posts()) :
     while (have_posts()) :
-        the_post();
+        the_post(); // Sets up global post data for use in the template.
 
-// Fetch the custom meta fields.
-        $tour_specialty = get_post_meta(get_the_ID(), 'tour_specialty', true);
-        $languages_spoken = get_post_meta(get_the_ID(), 'languages_spoken', true);
-        $tour_rates = get_post_meta(get_the_ID(), 'tour_rates', true);
+        // Fetch custom meta fields for the current post.
+        $tour_specialty = get_post_meta(get_the_ID(), 'tour_specialty', true); // Get the 'Tour Specialty' value.
+        $languages_spoken = get_post_meta(get_the_ID(), 'languages_spoken', true); // Get the 'Languages Spoken' value.
+        $tour_rates = get_post_meta(get_the_ID(), 'tour_rates', true); // Get the 'Tour Rates' value.
         ?>
-
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <!-- Tour Guide Title -->
-            <header class="entry-header">
-                <h1 class="entry-title"><?php the_title(); ?></h1>
-            </header>
-
-
-
