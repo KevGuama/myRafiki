@@ -170,3 +170,11 @@ add_action('save_post', 'myrafiki_save_tour_guide_meta');
  * Debug : Issue 1: Meta Box Not Editable in Gutenberg
  * Issue 2: Not Visible on the Frontend
  */
+
+// Register meta fields for Tour Guides CPT.
+function myrafiki_register_tour_guide_meta() {
+    register_post_meta('tour_guides', 'tour_guide_specialty', array(
+        'type'         => 'string',
+        'single'       => true,
+        'show_in_rest' => true,
+    ));
