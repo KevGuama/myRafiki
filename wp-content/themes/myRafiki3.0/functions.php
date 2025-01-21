@@ -183,3 +183,8 @@ register_post_meta('tour_guides', 'tour_guide_phone', array(
         'single'       => true,
         'show_in_rest' => true,
     ));
+register_post_meta('tour_guides', 'tour_guide_email', array(
+        'type'         => 'string',
+        'single'       => true,
+        'show_in_rest' => true,
+    ));
