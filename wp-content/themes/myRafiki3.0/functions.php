@@ -188,3 +188,20 @@ register_post_meta('tour_guides', 'tour_guide_email', array(
         'single'       => true,
         'show_in_rest' => true,
     ));
+register_post_meta('tour_guides', 'tour_guide_languages', array(
+        'type'         => 'string',
+        'single'       => true,
+        'show_in_rest' => true,
+    ));
+register_post_meta('tour_guides', 'tour_guide_experience', array(
+        'type'         => 'number',
+        'single'       => true,
+        'show_in_rest' => true,
+    ));
+    register_post_meta('tour_guides', 'tour_guide_available', array(
+        'type'         => 'boolean',
+        'single'       => true,
+        'show_in_rest' => true,
+    ));
+}
+add_action('init', 'myrafiki_register_tour_guide_meta');
