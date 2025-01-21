@@ -60,3 +60,18 @@ if (have_posts()) :
         $languages_spoken = get_post_meta(get_the_ID(), 'languages_spoken', true); // Get the 'Languages Spoken' value.
         $tour_rates = get_post_meta(get_the_ID(), 'tour_rates', true); // Get the 'Tour Rates' value.
         ?>
+
+<!-- Start Article for the Tour Guide Post -->
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            
+            <!-- Display the Tour Guide Title -->
+            <header class="entry-header">
+                <h1 class="entry-title"><?php the_title(); // Output the post title ?></h1>
+            </header>
+
+<!-- Display the Tour Guide Details -->
+            <div class="tour-guide-details">
+                <?php if ($tour_specialty) : ?>
+                    <!-- Display the Tour Specialty if available -->
+                    <p><strong>Specialty:</strong> <?php echo esc_html($tour_specialty); ?></p>
+                <?php endif; ?>
