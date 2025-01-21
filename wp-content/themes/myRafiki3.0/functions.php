@@ -164,3 +164,9 @@ function myrafiki_save_tour_guide_meta($post_id) {
     update_post_meta($post_id, '_guide_availability', isset($_POST['guide_availability']) ? '1' : '0');
 }
 add_action('save_post', 'myrafiki_save_tour_guide_meta');
+
+
+/**
+ * Debug : Issue 1: Meta Box Not Editable in Gutenberg
+ * Issue 2: Not Visible on the Frontend
+ */
