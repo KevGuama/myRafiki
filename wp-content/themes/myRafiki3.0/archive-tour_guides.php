@@ -46,3 +46,18 @@ get_header(); ?>
                         <?php the_title(); ?>
                     </a>
                 </h2>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                <!-- Title and permalink -->
+                <h2 class="tour-guide-title">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_title(); ?>
+                    </a>
+                </h2>
+
+<!-- Custom fields -->
+                <div class="tour-guide-meta">
+                    <?php if ($tour_specialty) : ?>
+                        <p><strong>Specialty:</strong> <?php echo esc_html($tour_specialty); ?></p>
+                    <?php endif; ?>
+
+
