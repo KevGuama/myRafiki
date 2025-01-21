@@ -75,3 +75,15 @@ if (have_posts()) :
                     <!-- Display the Tour Specialty if available -->
                     <p><strong>Specialty:</strong> <?php echo esc_html($tour_specialty); ?></p>
                 <?php endif; ?>
+
+<?php if ($languages_spoken) : ?>
+                    <!-- Display the Languages Spoken if available -->
+                    <p><strong>Languages Spoken:</strong> <?php echo esc_html($languages_spoken); ?></p>
+                <?php endif; ?>
+
+                <?php if ($tour_rates) : ?>
+                    <!-- Display the Tour Rates if available -->
+                    <p><strong>Rates:</strong> <?php echo esc_html($tour_rates); ?></p>
+                <?php endif; ?>
+            </div>
+
