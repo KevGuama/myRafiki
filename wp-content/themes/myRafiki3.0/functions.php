@@ -209,11 +209,8 @@ add_action('init', 'myrafiki_register_tour_guide_meta');
 /**
  * Steps to Fix
  * Flush Rewrite Rule
- */
-
-// Flush rewrite rules for the Tour Guides CPT.
-function myrafiki_flush_rewrite_rules() {
-    flush_rewrite_rules();
-}
-add_action('init', 'myrafiki_flush_rewrite_rules');
-
+ * Flush rewrite rules for the Tour Guides CPT.
+ * function myrafiki_flush_rewrite_rules() {
+ *flush_rewrite_rules();}
+ *add_action('init', 'myrafiki_flush_rewrite_rules');
+*/
