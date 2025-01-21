@@ -22,7 +22,7 @@ get_header(); ?>
             // Display the archive title dynamically.
             post_type_archive_title();
             ?>
-</h1>
+        </h1>
     </header><!-- .page-header -->
 
     <?php
@@ -33,20 +33,14 @@ get_header(); ?>
         // Loop through each post.
         while (have_posts()) :
             the_post();
-// Fetch custom meta fields.
+
+            // Fetch custom meta fields.
             $tour_specialty = get_post_meta(get_the_ID(), 'tour_specialty', true);
             $languages_spoken = get_post_meta(get_the_ID(), 'languages_spoken', true);
             $tour_rates = get_post_meta(get_the_ID(), 'tour_rates', true);
             ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <!-- Title and permalink -->
-                <h2 class="tour-guide-title">
-                    <a href="<?php the_permalink(); ?>">
-                        <?php the_title(); ?>
-                    </a>
-                </h2>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <!-- Title and permalink -->
                 <h2 class="tour-guide-title">
                     <a href="<?php the_permalink(); ?>">
@@ -54,13 +48,13 @@ get_header(); ?>
                     </a>
                 </h2>
 
-<!-- Custom fields -->
+                <!-- Custom fields -->
                 <div class="tour-guide-meta">
                     <?php if ($tour_specialty) : ?>
                         <p><strong>Specialty:</strong> <?php echo esc_html($tour_specialty); ?></p>
                     <?php endif; ?>
 
-<?php if ($languages_spoken) : ?>
+                    <?php if ($languages_spoken) : ?>
                         <p><strong>Languages Spoken:</strong> <?php echo esc_html($languages_spoken); ?></p>
                     <?php endif; ?>
 
@@ -68,7 +62,8 @@ get_header(); ?>
                         <p><strong>Rates:</strong> <?php echo esc_html($tour_rates); ?></p>
                     <?php endif; ?>
                 </div>
-<!-- Read More link -->
+
+                <!-- Read More link -->
                 <a class="read-more" href="<?php the_permalink(); ?>">Read More</a>
             </article>
 
@@ -77,4 +72,18 @@ get_header(); ?>
 
         echo '</div>';
 
+        // Add pagination for navigating through multiple pages of tour guides.
+        the_posts_pagination(array(
+            'prev_text' => __('Previous', 'myrafiki'),
+            'next_text' => __('Next', 'myrafiki'),
+        ));
+    else :
+        // If no posts found, display a message.
+        echo '<p>No tour guides found.</p>';
+    endif;
+    ?>
+</main><!-- #primary -->
 
+<?php
+// Get the footer for the archive page.
+get_footer();
