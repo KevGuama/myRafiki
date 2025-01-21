@@ -22,3 +22,17 @@ if (have_posts()) :
                 <p><strong>Experience:</strong> <?php echo esc_html(get_post_meta(get_the_ID(), 'tour_guide_experience', true)); ?> years</p>
                 <p><strong>Available Now:</strong> <?php echo get_post_meta(get_the_ID(), 'tour_guide_available', true) ? 'Yes' : 'No'; ?></p>
             </div>
+ </div>
+            <div class="tour-guide-content">
+                <?php the_content(); ?>
+            </div>
+        </div>
+
+        <?php
+    endwhile;
+else :
+    echo '<p>No Tour Guides found.</p>';
+endif;
+
+// Get the footer.
+get_footer();
