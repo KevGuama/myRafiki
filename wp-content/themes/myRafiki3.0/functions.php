@@ -166,3 +166,12 @@ function myrafiki_save_tour_guide_meta($post_id) {
     update_post_meta($post_id, '_guide_availability', isset($_POST['guide_availability']) ? '1' : '0');
 }
 add_action('save_post', 'myrafiki_save_tour_guide_meta');
+// Save each field value.
+    update_post_meta($post_id, '_guide_specialty', sanitize_text_field($_POST['guide_specialty']));
+    update_post_meta($post_id, '_guide_phone', sanitize_text_field($_POST['guide_phone']));
+    update_post_meta($post_id, '_guide_email', sanitize_email($_POST['guide_email']));
+    update_post_meta($post_id, '_guide_languages', sanitize_textarea_field($_POST['guide_languages']));
+    update_post_meta($post_id, '_guide_experience', intval($_POST['guide_experience']));
+    update_post_meta($post_id, '_guide_availability', isset($_POST['guide_availability']) ? '1' : '0');
+}
+add_action('save_post', 'myrafiki_save_tour_guide_meta');
