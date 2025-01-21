@@ -60,4 +60,21 @@ get_header(); ?>
                         <p><strong>Specialty:</strong> <?php echo esc_html($tour_specialty); ?></p>
                     <?php endif; ?>
 
+<?php if ($languages_spoken) : ?>
+                        <p><strong>Languages Spoken:</strong> <?php echo esc_html($languages_spoken); ?></p>
+                    <?php endif; ?>
+
+                    <?php if ($tour_rates) : ?>
+                        <p><strong>Rates:</strong> <?php echo esc_html($tour_rates); ?></p>
+                    <?php endif; ?>
+                </div>
+<!-- Read More link -->
+                <a class="read-more" href="<?php the_permalink(); ?>">Read More</a>
+            </article>
+
+            <?php
+        endwhile;
+
+        echo '</div>';
+
 
