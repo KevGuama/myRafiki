@@ -33,3 +33,16 @@ get_header(); ?>
         // Loop through each post.
         while (have_posts()) :
             the_post();
+// Fetch custom meta fields.
+            $tour_specialty = get_post_meta(get_the_ID(), 'tour_specialty', true);
+            $languages_spoken = get_post_meta(get_the_ID(), 'languages_spoken', true);
+            $tour_rates = get_post_meta(get_the_ID(), 'tour_rates', true);
+            ?>
+
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                <!-- Title and permalink -->
+                <h2 class="tour-guide-title">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_title(); ?>
+                    </a>
+                </h2>
