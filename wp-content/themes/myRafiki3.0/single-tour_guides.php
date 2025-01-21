@@ -3,3 +3,6 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
+// Get the header.
+get_header();
