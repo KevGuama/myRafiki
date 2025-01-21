@@ -122,4 +122,13 @@ function myrafiki_tour_guide_meta_box_callback($post) {
             <option value="mountain_trekking" <?php selected($specialty, 'mountain_trekking'); ?>><?php _e('Mountain Trekking', 'myrafiki'); ?></option>
             <option value="cultural_tours" <?php selected($specialty, 'cultural_tours'); ?>><?php _e('Cultural Tours', 'myrafiki'); ?></option>
         </select>
+<p>
+        <label for="guide_phone"><?php _e('Phone:', 'myrafiki'); ?></label>
+        <input type="text" id="guide_phone" name="guide_phone" value="<?php echo esc_attr($phone); ?>" />
+    </p>
+    <p>
+        <label for="guide_email"><?php _e('Email:', 'myrafiki'); ?></label>
+        <input type="email" id="guide_email" name="guide_email" value="<?php echo esc_attr($email); ?>" />
+    </p>
+    <p>
 
