@@ -11,3 +11,14 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
+// Get the header for the archive page.
+get_header(); ?>
+
+<main id="primary" class="site-main">
+    <header class="page-header">
+        <h1 class="page-title">
+            <?php
+            // Display the archive title dynamically.
+            post_type_archive_title();
+            ?>
