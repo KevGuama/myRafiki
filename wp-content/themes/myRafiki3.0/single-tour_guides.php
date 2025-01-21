@@ -47,6 +47,12 @@ get_footer();
  * Any additional content or blocks added in Gutenberg.
 */
 
+<?php
+// Prevent direct access to this file.
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+
 // Include the header template.
 get_header();
 
@@ -60,8 +66,8 @@ if (have_posts()) :
         $languages_spoken = get_post_meta(get_the_ID(), 'languages_spoken', true); // Get the 'Languages Spoken' value.
         $tour_rates = get_post_meta(get_the_ID(), 'tour_rates', true); // Get the 'Tour Rates' value.
         ?>
-
-<!-- Start Article for the Tour Guide Post -->
+        
+        <!-- Start Article for the Tour Guide Post -->
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             
             <!-- Display the Tour Guide Title -->
@@ -69,14 +75,14 @@ if (have_posts()) :
                 <h1 class="entry-title"><?php the_title(); // Output the post title ?></h1>
             </header>
 
-<!-- Display the Tour Guide Details -->
+            <!-- Display the Tour Guide Details -->
             <div class="tour-guide-details">
                 <?php if ($tour_specialty) : ?>
                     <!-- Display the Tour Specialty if available -->
                     <p><strong>Specialty:</strong> <?php echo esc_html($tour_specialty); ?></p>
                 <?php endif; ?>
 
-<?php if ($languages_spoken) : ?>
+                <?php if ($languages_spoken) : ?>
                     <!-- Display the Languages Spoken if available -->
                     <p><strong>Languages Spoken:</strong> <?php echo esc_html($languages_spoken); ?></p>
                 <?php endif; ?>
@@ -87,7 +93,7 @@ if (have_posts()) :
                 <?php endif; ?>
             </div>
 
-<!-- Display the Gutenberg Content of the Post -->
+            <!-- Display the Gutenberg Content of the Post -->
             <div class="entry-content">
                 <?php 
                 // Output the main content entered via Gutenberg or Classic Editor.
@@ -96,3 +102,13 @@ if (have_posts()) :
             </div>
         </article>
 
+        <?php
+    endwhile; // End of the Loop.
+else :
+    // Display a message if no tour guide post is found.
+    echo '<p>No tour guide found.</p>';
+endif;
+
+// Include the footer template.
+get_footer();
+?>
