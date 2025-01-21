@@ -79,7 +79,9 @@ function myrafiki_register_tour_guides_cpt() {
 // Hook the function to the 'init' action to ensure it runs when WordPress initializes.
 add_action('init', 'myrafiki_register_tour_guides_cpt');
 
+
 // Step: Adding Custom Fields to the Tour Guides CPT
+
 // Add meta boxes to the Tour Guides CPT.
 function myrafiki_add_tour_guide_meta_boxes() {
     add_meta_box(
@@ -106,13 +108,6 @@ function myrafiki_tour_guide_meta_box_callback($post) {
     $experience = get_post_meta($post->ID, '_guide_experience', true);
     $availability = get_post_meta($post->ID, '_guide_availability', true);
 
-    // Retrieve current values (if any) for each field.
-    $specialty = get_post_meta($post->ID, '_guide_specialty', true);
-    $phone = get_post_meta($post->ID, '_guide_phone', true);
-    $email = get_post_meta($post->ID, '_guide_email', true);
-    $languages = get_post_meta($post->ID, '_guide_languages', true);
-    $experience = get_post_meta($post->ID, '_guide_experience', true);
-    $availability = get_post_meta($post->ID, '_guide_availability', true);
     // Render form fields.
     ?>
     <p>
@@ -122,7 +117,8 @@ function myrafiki_tour_guide_meta_box_callback($post) {
             <option value="mountain_trekking" <?php selected($specialty, 'mountain_trekking'); ?>><?php _e('Mountain Trekking', 'myrafiki'); ?></option>
             <option value="cultural_tours" <?php selected($specialty, 'cultural_tours'); ?>><?php _e('Cultural Tours', 'myrafiki'); ?></option>
         </select>
-<p>
+    </p>
+    <p>
         <label for="guide_phone"><?php _e('Phone:', 'myrafiki'); ?></label>
         <input type="text" id="guide_phone" name="guide_phone" value="<?php echo esc_attr($phone); ?>" />
     </p>
@@ -131,7 +127,7 @@ function myrafiki_tour_guide_meta_box_callback($post) {
         <input type="email" id="guide_email" name="guide_email" value="<?php echo esc_attr($email); ?>" />
     </p>
     <p>
-<label for="guide_languages"><?php _e('Languages Spoken:', 'myrafiki'); ?></label>
+        <label for="guide_languages"><?php _e('Languages Spoken:', 'myrafiki'); ?></label>
         <textarea id="guide_languages" name="guide_languages"><?php echo esc_textarea($languages); ?></textarea>
     </p>
     <p>
@@ -139,7 +135,7 @@ function myrafiki_tour_guide_meta_box_callback($post) {
         <input type="number" id="guide_experience" name="guide_experience" value="<?php echo esc_attr($experience); ?>" />
     </p>
     <p>
-<label for="guide_availability">
+        <label for="guide_availability">
             <input type="checkbox" id="guide_availability" name="guide_availability" value="1" <?php checked($availability, '1'); ?> />
             <?php _e('Available Now', 'myrafiki'); ?>
         </label>
@@ -153,20 +149,13 @@ function myrafiki_save_tour_guide_meta($post_id) {
     if (!isset($_POST['myrafiki_tour_guide_nonce']) || !wp_verify_nonce($_POST['myrafiki_tour_guide_nonce'], 'myrafiki_save_tour_guide_meta')) {
         return;
     }
-// Skip saving during autosave or if the user lacks permission.
+
+    // Skip saving during autosave or if the user lacks permission.
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE || !current_user_can('edit_post', $post_id)) {
         return;
     }
-// Save each field value.
-    update_post_meta($post_id, '_guide_specialty', sanitize_text_field($_POST['guide_specialty']));
-    update_post_meta($post_id, '_guide_phone', sanitize_text_field($_POST['guide_phone']));
-    update_post_meta($post_id, '_guide_email', sanitize_email($_POST['guide_email']));
-    update_post_meta($post_id, '_guide_languages', sanitize_textarea_field($_POST['guide_languages']));
-    update_post_meta($post_id, '_guide_experience', intval($_POST['guide_experience']));
-    update_post_meta($post_id, '_guide_availability', isset($_POST['guide_availability']) ? '1' : '0');
-}
-add_action('save_post', 'myrafiki_save_tour_guide_meta');
-// Save each field value.
+
+    // Save each field value.
     update_post_meta($post_id, '_guide_specialty', sanitize_text_field($_POST['guide_specialty']));
     update_post_meta($post_id, '_guide_phone', sanitize_text_field($_POST['guide_phone']));
     update_post_meta($post_id, '_guide_email', sanitize_email($_POST['guide_email']));
