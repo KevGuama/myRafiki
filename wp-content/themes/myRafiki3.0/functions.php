@@ -139,4 +139,18 @@ function myrafiki_tour_guide_meta_box_callback($post) {
         <input type="number" id="guide_experience" name="guide_experience" value="<?php echo esc_attr($experience); ?>" />
     </p>
     <p>
+<label for="guide_availability">
+            <input type="checkbox" id="guide_availability" name="guide_availability" value="1" <?php checked($availability, '1'); ?> />
+            <?php _e('Available Now', 'myrafiki'); ?>
+        </label>
+    </p>
+    <?php
+}
+
+// Save custom field data.
+function myrafiki_save_tour_guide_meta($post_id) {
+    // Verify nonce for security.
+    if (!isset($_POST['myrafiki_tour_guide_nonce']) || !wp_verify_nonce($_POST['myrafiki_tour_guide_nonce'], 'myrafiki_save_tour_guide_meta')) {
+        return;
+    }
 
