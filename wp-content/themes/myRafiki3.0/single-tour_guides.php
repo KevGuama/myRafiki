@@ -36,3 +36,18 @@ endif;
 
 // Get the footer.
 get_footer();
+
+
+/**
+ * Next step: Display Meta Box Data on the Frontend
+ * 
+ * Use the single-tour_guides.php template to display:
+ * Tour Guide Name (post title).
+ * Tour Guide Details (custom fields from the meta box).
+ * Any additional content or blocks added in Gutenberg.
+*/
+
+// Get the header.
+get_header();
+
+
