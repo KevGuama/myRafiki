@@ -131,4 +131,12 @@ function myrafiki_tour_guide_meta_box_callback($post) {
         <input type="email" id="guide_email" name="guide_email" value="<?php echo esc_attr($email); ?>" />
     </p>
     <p>
+<label for="guide_languages"><?php _e('Languages Spoken:', 'myrafiki'); ?></label>
+        <textarea id="guide_languages" name="guide_languages"><?php echo esc_textarea($languages); ?></textarea>
+    </p>
+    <p>
+        <label for="guide_experience"><?php _e('Years of Experience:', 'myrafiki'); ?></label>
+        <input type="number" id="guide_experience" name="guide_experience" value="<?php echo esc_attr($experience); ?>" />
+    </p>
+    <p>
 
