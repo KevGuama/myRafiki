@@ -22,3 +22,14 @@ get_header(); ?>
             // Display the archive title dynamically.
             post_type_archive_title();
             ?>
+</h1>
+    </header><!-- .page-header -->
+
+    <?php
+    // Check if there are any posts to display.
+    if (have_posts()) :
+        echo '<div class="tour-guides-list">';
+
+        // Loop through each post.
+        while (have_posts()) :
+            the_post();
