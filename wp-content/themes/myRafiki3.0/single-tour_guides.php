@@ -50,4 +50,9 @@ get_footer();
 // Get the header.
 get_header();
 
+// Start the Loop to fetch the current post's data.
+if (have_posts()) :
+    while (have_posts()) :
+        the_post();
+
 
