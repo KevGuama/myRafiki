@@ -12,7 +12,8 @@ if (have_posts()) :
     while (have_posts()) :
         the_post();
         ?>
-<div class="tour-guide-container">
+
+        <div class="tour-guide-container">
             <h1><?php the_title(); ?></h1>
             <div class="tour-guide-details">
                 <p><strong>Specialty:</strong> <?php echo esc_html(get_post_meta(get_the_ID(), 'tour_guide_specialty', true)); ?></p>
@@ -22,7 +23,6 @@ if (have_posts()) :
                 <p><strong>Experience:</strong> <?php echo esc_html(get_post_meta(get_the_ID(), 'tour_guide_experience', true)); ?> years</p>
                 <p><strong>Available Now:</strong> <?php echo get_post_meta(get_the_ID(), 'tour_guide_available', true) ? 'Yes' : 'No'; ?></p>
             </div>
- </div>
             <div class="tour-guide-content">
                 <?php the_content(); ?>
             </div>
