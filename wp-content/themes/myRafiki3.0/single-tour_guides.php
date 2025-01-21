@@ -61,4 +61,11 @@ if (have_posts()) :
         $tour_rates = get_post_meta(get_the_ID(), 'tour_rates', true);
         ?>
 
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <!-- Tour Guide Title -->
+            <header class="entry-header">
+                <h1 class="entry-title"><?php the_title(); ?></h1>
+            </header>
+
+
 
