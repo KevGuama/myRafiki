@@ -55,4 +55,10 @@ if (have_posts()) :
     while (have_posts()) :
         the_post();
 
+// Fetch the custom meta fields.
+        $tour_specialty = get_post_meta(get_the_ID(), 'tour_specialty', true);
+        $languages_spoken = get_post_meta(get_the_ID(), 'languages_spoken', true);
+        $tour_rates = get_post_meta(get_the_ID(), 'tour_rates', true);
+        ?>
+
 
