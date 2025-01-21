@@ -47,12 +47,6 @@ get_footer();
  * Any additional content or blocks added in Gutenberg.
 */
 
-<?php
-// Prevent direct access to this file.
-if (!defined('ABSPATH')) {
-    exit; // Exit if accessed directly.
-}
-
 // Include the header template.
 get_header();
 
