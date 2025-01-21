@@ -87,3 +87,12 @@ if (have_posts()) :
                 <?php endif; ?>
             </div>
 
+<!-- Display the Gutenberg Content of the Post -->
+            <div class="entry-content">
+                <?php 
+                // Output the main content entered via Gutenberg or Classic Editor.
+                the_content(); 
+                ?>
+            </div>
+        </article>
+
