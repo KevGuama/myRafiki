@@ -106,3 +106,11 @@ function myrafiki_tour_guide_meta_box_callback($post) {
     $experience = get_post_meta($post->ID, '_guide_experience', true);
     $availability = get_post_meta($post->ID, '_guide_availability', true);
 
+    // Retrieve current values (if any) for each field.
+    $specialty = get_post_meta($post->ID, '_guide_specialty', true);
+    $phone = get_post_meta($post->ID, '_guide_phone', true);
+    $email = get_post_meta($post->ID, '_guide_email', true);
+    $languages = get_post_meta($post->ID, '_guide_languages', true);
+    $experience = get_post_meta($post->ID, '_guide_experience', true);
+    $availability = get_post_meta($post->ID, '_guide_availability', true);
+
