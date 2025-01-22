@@ -251,3 +251,11 @@ if (!empty($languages)) {
                 'compare' => 'LIKE',
             );
         }
+
+// Apply the meta query.
+        if (!empty($meta_query)) {
+            $query->set('meta_query', $meta_query);
+        }
+    }
+}
+add_action('pre_get_posts', 'myrafiki_filter_tour_guides_query');
