@@ -23,3 +23,9 @@ if (!defined('ABSPATH')) {
         <label for="languages"><?php _e('Languages', 'myrafiki'); ?></label>
         <input type="text" name="languages" id="languages" value="<?php echo esc_attr(get_query_var('languages')); ?>" />
     </div>
+
+<div>
+        <!-- Filter by Rates -->
+        <label for="rates"><?php _e('Rates', 'myrafiki'); ?></label>
+        <input type="text" name="rates" id="rates" value="<?php echo esc_attr(get_query_var('rates')); ?>" />
+    </div>
