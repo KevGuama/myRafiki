@@ -1,15 +1,11 @@
 <?php
-
 /**
- * Create the Archive Template
+ * Archive Template for Tour Guides
  * File: archive-tour_guides.php
- * Purpose: To list all tour guides with key information like title, specialty, languages  
- * spoken, and a "Read More" link to the full post.
- * Added filter logic for tour guides
-*/
+ * Purpose: Lists all tour guides with key information like title, specialty, and languages spoken.
+ */
 
-<?php
-// Prevent direct access to the file.
+// Prevent direct access.
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -20,62 +16,40 @@ get_header();
 
 <div class="tour-guides-archive">
 
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1 class="page-title"><?php post_type_archive_title(); ?></h1>
+    </header>
+
     <!-- Include the Filter Form -->
-    <?php get_template_part('template-parts/tour-guides/filter-form'); ?>
+    <section class="tour-guide-filter">
+        <?php get_template_part('template-parts/tour-guides/filter-form'); ?>
+    </section>
 
     <!-- Tour Guides List -->
-    <div class="tour-guides-list">
+    <section class="tour-guides-list">
         <?php
-        // Arguments for WP_Query based on filter values.
-        $args = [
-            'post_type' => 'tour_guides',
-            'posts_per_page' => -1,
-            's' => isset($_GET['search_query']) ? sanitize_text_field($_GET['search_query']) : '',
-            'meta_query' => [
-                'relation' => 'AND',
-            ],
-        ];
+        // Start the Loop.
+        if (have_posts()) :
+            while (have_posts()) :
+                the_post();
 
-        // Add specialty filter if selected.
-        if (!empty($_GET['filter_specialty'])) {
-            $args['meta_query'][] = [
-                'key' => 'tour_specialty',
-                'value' => sanitize_text_field($_GET['filter_specialty']),
-                'compare' => 'LIKE',
-            ];
-        }
+                // Use a template part for consistent content display.
+                get_template_part('template-parts/tour-guides/content', 'archive');
 
-        // Add language filter if selected.
-        if (!empty($_GET['filter_language'])) {
-            $args['meta_query'][] = [
-                'key' => 'languages_spoken',
-                'value' => sanitize_text_field($_GET['filter_language']),
-                'compare' => 'LIKE',
-            ];
-        }
-
-        // Query the posts.
-        $query = new WP_Query($args);
-
-        // Check if there are posts.
-        if ($query->have_posts()) :
-            while ($query->have_posts()) :
-                $query->the_post();
-                ?>
-                <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                    <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                    <div class="tour-guide-excerpt"><?php the_excerpt(); ?></div>
-                </article>
-                <?php
             endwhile;
-        else :
-            echo '<p>No tour guides found matching your criteria.</p>';
-        endif;
 
-        // Reset post data.
-        wp_reset_postdata();
+            // Display pagination.
+            the_posts_pagination([
+                'prev_text' => __('Previous', 'myrafiki'),
+                'next_text' => __('Next', 'myrafiki'),
+            ]);
+        else :
+            // No posts found message.
+            echo '<p>' . __('No tour guides found matching your criteria.', 'myrafiki') . '</p>';
+        endif;
         ?>
-    </div>
+    </section>
 </div>
 
 <?php
