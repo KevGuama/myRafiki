@@ -227,3 +227,11 @@ function myrafiki_filter_tour_guides_query($query) {
                 'compare' => 'LIKE',
             );
         }
+
+if (!empty($languages)) {
+            $meta_query[] = array(
+                'key'     => 'languages_spoken',
+                'value'   => $languages,
+                'compare' => 'LIKE',
+            );
+        }
