@@ -217,7 +217,7 @@ function myrafiki_filter_tour_guides_query($query) {
         $languages = sanitize_text_field(get_query_var('languages'));
         $rates = sanitize_text_field(get_query_var('rates'));
 
-/ Add meta queries for filtering.
+        // Add meta queries for filtering.
         $meta_query = array();
 
         if (!empty($specialty)) {
@@ -228,15 +228,7 @@ function myrafiki_filter_tour_guides_query($query) {
             );
         }
 
-if (!empty($languages)) {
-            $meta_query[] = array(
-                'key'     => 'languages_spoken',
-                'value'   => $languages,
-                'compare' => 'LIKE',
-            );
-        }
-
-if (!empty($languages)) {
+        if (!empty($languages)) {
             $meta_query[] = array(
                 'key'     => 'languages_spoken',
                 'value'   => $languages,
@@ -252,7 +244,7 @@ if (!empty($languages)) {
             );
         }
 
-// Apply the meta query.
+        // Apply the meta query.
         if (!empty($meta_query)) {
             $query->set('meta_query', $meta_query);
         }
