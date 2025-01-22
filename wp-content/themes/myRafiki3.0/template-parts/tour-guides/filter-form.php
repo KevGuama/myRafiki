@@ -29,3 +29,8 @@ if (!defined('ABSPATH')) {
         <label for="rates"><?php _e('Rates', 'myrafiki'); ?></label>
         <input type="text" name="rates" id="rates" value="<?php echo esc_attr(get_query_var('rates')); ?>" />
     </div>
+div>
+        <!-- Submit Button -->
+        <button type="submit"><?php _e('Filter', 'myrafiki'); ?></button>
+    </div>
+</form>
