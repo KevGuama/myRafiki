@@ -235,3 +235,19 @@ if (!empty($languages)) {
                 'compare' => 'LIKE',
             );
         }
+
+if (!empty($languages)) {
+            $meta_query[] = array(
+                'key'     => 'languages_spoken',
+                'value'   => $languages,
+                'compare' => 'LIKE',
+            );
+        }
+
+        if (!empty($rates)) {
+            $meta_query[] = array(
+                'key'     => 'tour_rates',
+                'value'   => $rates,
+                'compare' => 'LIKE',
+            );
+        }
