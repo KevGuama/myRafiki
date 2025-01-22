@@ -10,14 +10,14 @@ if (!defined('ABSPATH')) {
  * Displays a single tour guide's excerpt in the archive view.
  */
 ?>
-
-article id="post-<?php the_ID(); ?>" <?php post_class('tour-guide-summary'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('tour-guide-summary'); ?>>
     <header class="entry-header">
         <h2 class="entry-title">
             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
         </h2>
     </header>
-<div class="entry-meta">
+
+    <div class="entry-meta">
         <?php
         // Display specialties if available.
         $specialty = get_post_meta(get_the_ID(), 'tour_specialty', true);
@@ -25,7 +25,7 @@ article id="post-<?php the_ID(); ?>" <?php post_class('tour-guide-summary'); ?>>
             echo '<p><strong>' . __('Specialty:', 'myrafiki') . '</strong> ' . esc_html($specialty) . '</p>';
         }
         ?>
-</div>
+    </div>
 
     <div class="entry-summary">
         <?php the_excerpt(); ?>
