@@ -25,3 +25,9 @@ article id="post-<?php the_ID(); ?>" <?php post_class('tour-guide-summary'); ?>>
             echo '<p><strong>' . __('Specialty:', 'myrafiki') . '</strong> ' . esc_html($specialty) . '</p>';
         }
         ?>
+</div>
+
+    <div class="entry-summary">
+        <?php the_excerpt(); ?>
+    </div>
+</article>
