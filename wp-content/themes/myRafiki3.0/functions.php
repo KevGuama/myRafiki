@@ -216,3 +216,14 @@ function myrafiki_filter_tour_guides_query($query) {
         $specialty = sanitize_text_field(get_query_var('specialty'));
         $languages = sanitize_text_field(get_query_var('languages'));
         $rates = sanitize_text_field(get_query_var('rates'));
+
+/ Add meta queries for filtering.
+        $meta_query = array();
+
+        if (!empty($specialty)) {
+            $meta_query[] = array(
+                'key'     => 'tour_specialty',
+                'value'   => $specialty,
+                'compare' => 'LIKE',
+            );
+        }
