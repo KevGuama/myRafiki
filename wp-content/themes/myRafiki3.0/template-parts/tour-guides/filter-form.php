@@ -17,3 +17,9 @@ if (!defined('ABSPATH')) {
         <label for="specialty"><?php _e('Specialty', 'myrafiki'); ?></label>
         <input type="text" name="specialty" id="specialty" value="<?php echo esc_attr(get_query_var('specialty')); ?>" />
     </div>
+
+<div>
+        <!-- Filter by Languages -->
+        <label for="languages"><?php _e('Languages', 'myrafiki'); ?></label>
+        <input type="text" name="languages" id="languages" value="<?php echo esc_attr(get_query_var('languages')); ?>" />
+    </div>
