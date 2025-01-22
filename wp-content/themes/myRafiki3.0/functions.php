@@ -206,11 +206,13 @@ function myrafiki_register_tour_guide_meta() {
 }
 add_action('init', 'myrafiki_register_tour_guide_meta');
 
+
 /**
- * Steps to Fix
- * Flush Rewrite Rule
- * Flush rewrite rules for the Tour Guides CPT.
- * function myrafiki_flush_rewrite_rules() {
- *flush_rewrite_rules();}
- *add_action('init', 'myrafiki_flush_rewrite_rules');
-*/
+ * Modify the Tour Guides Query Based on Filters
+ */
+function myrafiki_filter_tour_guides_query($query) {
+    if (!is_admin() && $query->is_main_query() && is_post_type_archive('tour_guides')) {
+        // Get filter values from the URL.
+        $specialty = sanitize_text_field(get_query_var('specialty'));
+        $languages = sanitize_text_field(get_query_var('languages'));
+        $rates = sanitize_text_field(get_query_var('rates'));
