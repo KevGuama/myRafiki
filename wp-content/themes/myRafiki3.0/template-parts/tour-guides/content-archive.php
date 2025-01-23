@@ -33,3 +33,8 @@ get_header();
         if (have_posts()) :
             while (have_posts()) :
                 the_post();
+
+// Use a template part for consistent content display.
+                get_template_part('template-parts/tour-guides/content', 'archive');
+
+            endwhile;
