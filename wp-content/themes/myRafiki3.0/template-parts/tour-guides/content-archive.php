@@ -38,3 +38,9 @@ get_header();
                 get_template_part('template-parts/tour-guides/content', 'archive');
 
             endwhile;
+// Display pagination.
+            the_posts_pagination([
+                'prev_text' => __('Previous', 'myrafiki'),
+                'next_text' => __('Next', 'myrafiki'),
+            ]);
+        else :
