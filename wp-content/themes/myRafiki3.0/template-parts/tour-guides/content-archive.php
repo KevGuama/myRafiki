@@ -44,3 +44,7 @@ get_header();
                 'next_text' => __('Next', 'myrafiki'),
             ]);
         else :
+// No posts found message.
+            echo '<p>' . __('No tour guides found matching your criteria.', 'myrafiki') . '</p>';
+        endif;
+        ?>
