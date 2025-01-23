@@ -14,3 +14,10 @@ if (!defined('ABSPATH')) {
 get_header();
 ?>
 
+<div class="tour-guides-archive">
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1 class="page-title"><?php post_type_archive_title(); ?></h1>
+    </header>
+
