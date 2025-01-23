@@ -26,3 +26,10 @@ get_header();
         <?php get_template_part('template-parts/tour-guides/filter-form'); ?>
     </section>
 
+<!-- Tour Guides List -->
+    <section class="tour-guides-list">
+        <?php
+        // Start the Loop.
+        if (have_posts()) :
+            while (have_posts()) :
+                the_post();
