@@ -21,3 +21,8 @@ get_header();
         <h1 class="page-title"><?php post_type_archive_title(); ?></h1>
     </header>
 
+<!-- Include the Filter Form -->
+    <section class="tour-guide-filter">
+        <?php get_template_part('template-parts/tour-guides/filter-form'); ?>
+    </section>
+
