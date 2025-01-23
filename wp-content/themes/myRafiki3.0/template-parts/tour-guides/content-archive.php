@@ -21,12 +21,12 @@ get_header();
         <h1 class="page-title"><?php post_type_archive_title(); ?></h1>
     </header>
 
-<!-- Include the Filter Form -->
+    <!-- Include the Filter Form -->
     <section class="tour-guide-filter">
         <?php get_template_part('template-parts/tour-guides/filter-form'); ?>
     </section>
 
-<!-- Tour Guides List -->
+    <!-- Tour Guides List -->
     <section class="tour-guides-list">
         <?php
         // Start the Loop.
@@ -34,21 +34,22 @@ get_header();
             while (have_posts()) :
                 the_post();
 
-// Use a template part for consistent content display.
+                // Use a template part for consistent content display.
                 get_template_part('template-parts/tour-guides/content', 'archive');
 
             endwhile;
-// Display pagination.
+
+            // Display pagination.
             the_posts_pagination([
                 'prev_text' => __('Previous', 'myrafiki'),
                 'next_text' => __('Next', 'myrafiki'),
             ]);
         else :
-// No posts found message.
+            // No posts found message.
             echo '<p>' . __('No tour guides found matching your criteria.', 'myrafiki') . '</p>';
         endif;
         ?>
-</section>
+    </section>
 </div>
 
 <?php
