@@ -48,3 +48,10 @@ get_header();
             echo '<p>' . __('No tour guides found matching your criteria.', 'myrafiki') . '</p>';
         endif;
         ?>
+</section>
+</div>
+
+<?php
+// Include the footer.
+get_footer();
+?>
