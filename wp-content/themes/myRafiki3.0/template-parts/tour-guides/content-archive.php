@@ -10,3 +10,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+// Include the header.
+get_header();
+?>
+
