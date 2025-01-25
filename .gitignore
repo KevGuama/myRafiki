@@ -1,1 +1,13 @@
 H:\softs\xampp\htdocs\myRafiki\wp-content\wpvividbackups
+
+# Ignore everything in wp-content
+wp-content/*
+
+# Except the themes folder
+!wp-content/themes/
+
+# Optionally ignore other files like temporary or backup files
+*.log
+*.tmp
+*.bak
+
