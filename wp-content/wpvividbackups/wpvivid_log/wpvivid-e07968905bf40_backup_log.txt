@@ -1,0 +1,93 @@
+Log created: 2025-01-26 00:26:44
+Type: backup
+[2025-01-26 00:26:46][notice]Start backing up.
+[2025-01-26 00:26:46][notice]server info fcgi:Off max execution time: 300 wp version:6.6.2 php version:8.1.25 db version:10.4.32 php ini:safe_mode: memory_limit:256M memory_get_usage:64.06 MB memory_get_peak_usage:66.33 MB extensions:PDO enabled curl enabled zlib enabled   is_multisite:0
+[2025-01-26 00:26:46][notice]Prepare to backup backup_db files.
+[2025-01-26 00:26:46][notice]Start exporting database.
+[2025-01-26 00:26:46][notice]Preparing to dump table wp3_ff_scheduled_actions
+[2025-01-26 00:26:46][notice]Preparing to dump table wp3_fluentform_entry_details
+[2025-01-26 00:26:46][notice]Preparing to dump table wp3_fluentform_form_analytics
+[2025-01-26 00:26:46][notice]Preparing to dump table wp3_fluentform_form_meta
+[2025-01-26 00:26:46][notice]Preparing to dump table wp3_fluentform_forms
+[2025-01-26 00:26:46][notice]Preparing to dump table wp3_fluentform_logs
+[2025-01-26 00:26:46][notice]Preparing to dump table wp3_fluentform_submission_meta
+[2025-01-26 00:26:46][notice]Preparing to dump table wp3_fluentform_submissions
+[2025-01-26 00:26:46][notice]Preparing to dump table wp3_give_comments
+[2025-01-26 00:26:46][notice]Preparing to dump table wp3_give_migrations
+[2025-01-26 00:26:46][notice]Preparing to dump table wp3_give_revenue
+[2025-01-26 00:26:46][notice]Preparing to dump table wp3_give_sequential_ordering
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_actionscheduler_claims
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_actionscheduler_groups
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_give_sessions
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_links
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_presto_player_audio_presets
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_presto_player_email_collection
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_presto_player_presets
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_presto_player_webhooks
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_tec_events
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_term_relationships
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_actionscheduler_logs
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_commentmeta
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_give_commentmeta
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_give_donationmeta
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_give_donormeta
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_give_formmeta
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_give_subscriptionmeta
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_tec_occurrences
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_term_taxonomy
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_termmeta
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_terms
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_usermeta
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_give_donors
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_give_log
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_users
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_podsrel
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_presto_player_videos
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_comments
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_give_subscriptions
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_presto_player_visits
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_actionscheduler_actions
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_posts
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_postmeta
+[2025-01-26 00:26:47][notice]Preparing to dump table wp3_options
+[2025-01-26 00:26:47][notice]Exporting database finished.
+[2025-01-26 00:26:47][notice]Start compressing database
+[2025-01-26 00:26:47][notice]Prepare to zip file. file: localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_db.sql
+[2025-01-26 00:26:48][notice]Adding zip files completed.localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_db.part001.zip, filesize: 362.13 KB
+[2025-01-26 00:26:48][notice]Compressing database completed
+[2025-01-26 00:26:48][notice]Backing up backup_db completed.
+[2025-01-26 00:26:48][notice]Prepare to backup backup_themes files.
+[2025-01-26 00:26:48][notice]Compressing zip file:localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_themes.part001.zip index:1326
+[2025-01-26 00:26:52][notice]Compressing zip file:localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_themes.part001.zip success. index:1326 file size:9.07 MB
+[2025-01-26 00:26:52][notice]Backing up backup_themes completed.
+[2025-01-26 00:26:52][notice]Prepare to backup backup_plugin files.
+[2025-01-26 00:26:53][notice]Compressing zip file:localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_plugin.part001.zip index:2310
+[2025-01-26 00:27:01][notice]Compressing zip file:localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_plugin.part001.zip success. index:2310 file size:17.61 MB
+[2025-01-26 00:27:01][notice]Backing up backup_plugin completed.
+[2025-01-26 00:27:01][notice]Prepare to backup backup_uploads files.
+[2025-01-26 00:27:01][notice]Compressing zip file:localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_uploads.part001.zip index:138
+[2025-01-26 00:27:07][notice]Compressing zip file:localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_uploads.part001.zip success. index:138 file size:28.30 MB
+[2025-01-26 00:27:07][notice]Backing up backup_uploads completed.
+[2025-01-26 00:27:07][notice]Prepare to backup backup_content files.
+[2025-01-26 00:27:07][notice]Compressing zip file:localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_content.part001.zip index:1
+[2025-01-26 00:27:07][notice]Compressing zip file:localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_content.part001.zip success. index:1 file size:144.00 B
+[2025-01-26 00:27:07][notice]Backing up backup_content completed.
+[2025-01-26 00:27:07][notice]Prepare to backup backup_core files.
+[2025-01-26 00:27:09][notice]Compressing zip file:localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_core.part001.zip index:2680
+[2025-01-26 00:27:16][notice]Compressing zip file:localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_core.part001.zip success. index:2680 file size:13.99 MB
+[2025-01-26 00:27:16][notice]Backing up backup_core completed.
+[2025-01-26 00:27:17][notice]Prepare to backup backup_merge files.
+[2025-01-26 00:27:17][notice]Prepare to zip file. file: localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_db.zip
+[2025-01-26 00:27:17][notice]Adding zip files completed.localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_all.part001.zip, filesize: 360.05 KB
+[2025-01-26 00:27:17][notice]Prepare to zip file. file: localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_themes.zip
+[2025-01-26 00:27:17][notice]Adding zip files completed.localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_all.part001.zip, filesize: 9.13 MB
+[2025-01-26 00:27:17][notice]Prepare to zip file. file: localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_plugin.zip
+[2025-01-26 00:27:18][notice]Adding zip files completed.localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_all.part001.zip, filesize: 26.19 MB
+[2025-01-26 00:27:18][notice]Prepare to zip file. file: localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_uploads.zip
+[2025-01-26 00:27:20][notice]Adding zip files completed.localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_all.part001.zip, filesize: 54.03 MB
+[2025-01-26 00:27:20][notice]Prepare to zip file. file: localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_content.zip
+[2025-01-26 00:27:20][notice]Adding zip files completed.localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_all.part001.zip, filesize: 54.03 MB
+[2025-01-26 00:27:20][notice]Prepare to zip file. file: localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_core.zip
+[2025-01-26 00:27:21][notice]Adding zip files completed.localhost_myRafiki_wpvivid-e07968905bf40_2025-01-26-00-26_backup_all.part001.zip, filesize: 67.64 MB
+[2025-01-26 00:27:22][notice]Backing up backup_merge completed.
+[2025-01-26 00:27:22][notice]Backup completed.
