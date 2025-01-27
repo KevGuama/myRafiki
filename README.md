@@ -9,7 +9,7 @@
 ## 🌟 Key Highlights  
 
 - **Custom WordPress Theme Development:** The project has evolved through iterations of custom themes—`kevG_Theme`, `myRafiki`, and the final refined version, `myRafiki_3.0`.  
-- **Live Deployment:** Hosted on a cloud server, accessible to the public.  
+- **Live Deployment:** Hosted on a cloud server, accessible to the public. Visit the live site here: [myRafiki Platform](https://paramountcaterers.co.ke/myAlxProject/)   
 - **Focus on Learning and Growth:** A significant milestone in mastering PHP, WordPress theme development, and cloud hosting.  
 
 ---
