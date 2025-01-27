@@ -4,7 +4,7 @@
 
 **myRafiki** is a community-focused platform developed to connect travelers with trusted local tour guides, providing authentic and personalized travel experiences. The platform uses custom WordPress themes tailored for scalability and usability, with a focus on Sagana, Kenya, as the pilot region.  
 📌 Visit the live site here: [myRafiki Platform](https://paramountcaterers.co.ke/myAlxProject/)
-📌 Visit the live presntation here: [myRafiki Platform](https://paramountcaterers.co.ke/myAlxProject/)
+📌 Visit the live presentation here: [myRafiki Youtube Presentation](https://youtu.be/0EkSqqExDyE)
 
 ---
 
