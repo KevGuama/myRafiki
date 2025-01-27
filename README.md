@@ -2,7 +2,9 @@
 
 ## 🚀 Project Overview  
 
-**myRafiki** is a community-focused platform developed to connect travelers with trusted local tour guides, providing authentic and personalized travel experiences. The platform uses custom WordPress themes tailored for scalability and usability, with a focus on Sagana, Kenya, as the pilot region.  Visit the live site here: [myRafiki Platform](https://paramountcaterers.co.ke/myAlxProject/) 
+**myRafiki** is a community-focused platform developed to connect travelers with trusted local tour guides, providing authentic and personalized travel experiences. The platform uses custom WordPress themes tailored for scalability and usability, with a focus on Sagana, Kenya, as the pilot region.  
+📌 Visit the live site here: [myRafiki Platform](https://paramountcaterers.co.ke/myAlxProject/)
+📌 Visit the live presntation here: [myRafiki Platform](https://paramountcaterers.co.ke/myAlxProject/)
 
 ---
 
@@ -87,7 +89,8 @@ Visit the live site here: [myRafiki Platform](https://paramountcaterers.co.ke/my
 ## 🤝 Connect with Me  
 
 - **LinkedIn:** [Kelvin K. Guama](https://www.linkedin.com/in/kelvin-k-guama)  
-- **GitHub:** [KevGuama](https://github.com/KevGuama)  
+- **GitHub:** [KevGuama](https://github.com/KevGuama)
+- **Toutube:** [@kelvinguama7640](https://youtu.be/0EkSqqExDyE))
 
 ---
 
