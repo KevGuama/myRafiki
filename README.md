@@ -18,11 +18,11 @@
 
 ## 🌟 Key Features  
 
-- **Guide Booking: Easily book your preferred guide under the "Marafiki" tab with engaging e-commerce-style animations for a seamless booking experience.
-- **WhatsApp Integration: Booking details are sent directly to the backend team via WhatsApp for swift processing.
-- **Quick Booking Form: Use the "Book Now" tab to fill out a booking form. Client information is sent via email or Google Sheets for efficient handling.
-- **User Registration: Clients can register through the "Sign Up avatar" button at the top right. Registered users have access to a personalized dashboard where their bookings are stored.
-- **Guest Checkout: Clients can book without signing up, with their phone numbers collected to facilitate communication and service delivery.
+- Guide Booking: Easily book your preferred guide under the "Marafiki" tab with engaging e-commerce-style animations for a seamless booking experience.
+- WhatsApp Integration: Booking details are sent directly to the backend team via WhatsApp for swift processing.
+- Quick Booking Form: Use the "Book Now" tab to fill out a booking form. Client information is sent via email or Google Sheets for efficient handling.
+- User Registration: Clients can register through the "Sign Up avatar" button at the top right. Registered users have access to a personalized dashboard where their bookings are stored.
+- Guest Checkout: Clients can book without signing up, with their phone numbers collected to facilitate communication and service delivery.
 
 ---
 
